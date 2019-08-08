@@ -1,8 +1,12 @@
 package com.gdut.user.service.impl
 
+import com.gdut.base.data.protocol.BaseResp
+import com.gdut.base.rx.BaseExcpption
+import com.gdut.user.data.repository.UserRepository
 import com.gdut.user.service.UserService
 
 import rx.Observable
+import rx.functions.Func1
 
 /**
  * @author  Li Xuyang
@@ -10,8 +14,20 @@ import rx.Observable
  */
 class UserServiceImpl:UserService {
 
-    override fun register(mobile: String, verifyCode: String, pwd: String): Observable<Boolean> {
+    override fun register(mobile: String, pwd: String, verifyCode: String): Observable<Boolean> {
 
-        return  Observable.just(true)
+        val repository = UserRepository()
+        return  repository.register(mobile,pwd,verifyCode)
+            .flatMap (object :Func1<BaseResp<String>,Observable<Boolean>>{
+                override fun call(t: BaseResp<String>): Observable<Boolean> {
+                    if (t.status !=0){
+                        return Observable.error(BaseExcpption(t.status,t.message))
+
+                    }else{
+                        return Observable.just(true)
+                    }
+                }
+
+            })
     }
 }
