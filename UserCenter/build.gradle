@@ -29,6 +29,21 @@ android {
         }
     }
 
+    sourceSets {
+        main{
+            if (isUserModule.toBoolean()){
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                //release模式下排除debug文件夹中的所有Java文件
+                java {
+                    exclude 'debug/**'
+                }
+            }else{
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+
+        }
+    }
+
 }
 
 dependencies {
