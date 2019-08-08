@@ -1,7 +1,6 @@
-
-if (isUserModule.toBoolean()){
+if (isUserModule.toBoolean()) {
     apply plugin: 'com.android.library'
-}else {
+} else {
     apply plugin: 'com.android.application'
 }
 
@@ -30,14 +29,14 @@ android {
     }
 
     sourceSets {
-        main{
-            if (isUserModule.toBoolean()){
+        main {
+            if (isUserModule.toBoolean()) {
                 manifest.srcFile 'src/main/release/AndroidManifest.xml'
                 //release模式下排除debug文件夹中的所有Java文件
                 java {
                     exclude 'debug/**'
                 }
-            }else{
+            } else {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             }
 
@@ -56,4 +55,22 @@ dependencies {
 
     implementation project(path: ':Provider')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Anko Commons
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+
+    // Support-v4 (only Anko Commons)
+    implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+
+    // Appcompat-v7 (only Anko Commons)
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+
+    // Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version" // sdk15, sdk19, sdk21, sdk23 are also available
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+
+    // Coroutine listeners for Anko Layouts
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
 }
