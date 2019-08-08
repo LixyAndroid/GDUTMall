@@ -1,7 +1,11 @@
 package com.gdut.user.presenter
 
+import com.gdut.base.ext.execute
 import com.gdut.base.presenter.BasePresenter
+import com.gdut.base.rx.BaseSubscriber
 import com.gdut.user.presenter.view.RegisterView
+import com.gdut.user.service.impl.UserServiceImpl
+
 
 /**
  * @author  Li Xuyang
@@ -9,10 +13,24 @@ import com.gdut.user.presenter.view.RegisterView
  */
 class RegisterPresenter:BasePresenter<RegisterView> () {
 
-    fun register(movile:String,verifyCode:String){
+    fun register(mobile:String,verifyCode:String,pwd:String){
         /*
-        业务逻辑
+             业务逻辑
          */
-        mView.onRegisterResult(true)
+
+        val userService = UserServiceImpl()
+        userService.register(mobile,verifyCode,pwd)
+            .execute(object :BaseSubscriber<Boolean>(){
+
+                override fun onNext(t: Boolean) {
+                    mView.onRegisterResult(t)
+                }
+            })
+
+
     }
 }
+
+
+
+
