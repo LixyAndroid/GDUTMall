@@ -72,4 +72,11 @@ dependencies {
 
     implementation "io.reactivex:rxkotlin:$rx_kotlin_version"
     implementation "io.reactivex:rxandroid:$rx_android_version"
+
+    //Retrofit
+    implementation "com.squareup.okhttp3:okhttp:${ok_http_version}"
+    implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${ok_http_version}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
 }
