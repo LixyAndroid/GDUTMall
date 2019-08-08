@@ -1,7 +1,8 @@
-package com.gdut.gdutmall
+package com.gdut.gdutmall.ui.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.gdut.gdutmall.R
 
 class MainActivity : AppCompatActivity() {
 
