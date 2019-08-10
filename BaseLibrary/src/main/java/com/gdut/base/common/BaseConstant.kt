@@ -7,6 +7,7 @@ package com.gdut.base.common
 
 class BaseConstant{
     companion object{
-        val SERVER_ADDRESS = "http://192.168.0.100:8080"
+        //本地ip
+        val SERVER_ADDRESS = "http://10.23.15.6:8080"
     }
 }

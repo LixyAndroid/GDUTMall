@@ -2,6 +2,7 @@ package com.gdut.base.ui.activity
 
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
+import javax.inject.Inject
 
 /**
  * @author  Li Xuyang
@@ -20,5 +21,6 @@ open class BaseMvpActivity<T:BasePresenter<*>>:BaseActivity(),BaseView {
 
     }
 
+    @Inject
     lateinit var mPresenter: T
 }
