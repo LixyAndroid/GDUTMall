@@ -9,6 +9,7 @@ import com.gdut.base.injection.module.LifecycleProviderModule
 
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
+import com.gdut.base.widgets.ProgressLoading
 import javax.inject.Inject
 
 /**
@@ -17,11 +18,11 @@ import javax.inject.Inject
  */
 open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
     override fun showLoading() {
-
+        mLoadingDialog.showLoading()
     }
 
     override fun hideLoading() {
-
+        mLoadingDialog.hideLoading()
     }
 
     override fun onError() {
@@ -34,12 +35,16 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
 
     lateinit var activityComponent: ActivityComponent
 
+    private lateinit var mLoadingDialog: ProgressLoading
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initActivityInjection()
 
         injectComponent()
+
+        mLoadingDialog = ProgressLoading.create(this)
 
     }
 
