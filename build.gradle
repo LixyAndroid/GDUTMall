@@ -10,6 +10,11 @@ buildscript {
     ext.retrofit_version = '2.1.0'
 
     ext.dagger_version = '2.11'
+
+    ext.rx_lifecycle_version = '1.0'
+
+
+
     repositories {
         google()
         jcenter()

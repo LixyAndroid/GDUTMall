@@ -5,6 +5,7 @@ import com.gdut.base.common.BaseApplication
 import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.base.injection.component.DaggerActivityComponent
 import com.gdut.base.injection.module.ActivityModule
+import com.gdut.base.injection.module.LifecycleProviderModule
 
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
@@ -38,12 +39,15 @@ open class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
 
         initActivityInjection()
 
+
+
     }
 
     private fun initActivityInjection() {
 
         activityComponent = DaggerActivityComponent.builder().appComponent((application as BaseApplication).appComponent).activityModule(
-            ActivityModule(this)
-        ).build()
+            ActivityModule(this))
+            .lifecycleProviderModule(LifecycleProviderModule(this))
+            .build()
     }
 }
