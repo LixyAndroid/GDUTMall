@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.user.R
 import com.gdut.user.injection.component.DaggerUserComponent
+
 import com.gdut.user.injection.module.UserModule
 import com.gdut.user.presenter.RegisterPresenter
 import com.gdut.user.presenter.view.RegisterView
@@ -31,7 +32,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
 
     private fun initInjection() {
 
-        DaggerUserComponent.builder().userModule(UserModule()).build().inject(this)
+        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
         mPresenter.mView = this
     }
 }
