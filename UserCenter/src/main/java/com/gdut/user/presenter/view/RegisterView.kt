@@ -7,5 +7,5 @@ import com.gdut.base.presenter.view.BaseView
  * date  2019/8/8 16:06
  */
 interface RegisterView:BaseView {
-    fun onRegisterResult(result:Boolean)
+    fun onRegisterResult(result:String)
 }

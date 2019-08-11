@@ -1,4 +1,4 @@
-package com.gdut.base.ui.activity
+package com.gdut.base.ui.fragment
 
 import android.os.Bundle import android.os.PersistableBundle
 import com.gdut.base.common.BaseApplication
@@ -13,9 +13,9 @@ import javax.inject.Inject
 
 /**
  * @author  Li Xuyang
- * date  2019/8/8 15:58
+ * date  2019/8/8 20:50
  */
-open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), BaseView {
+open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
     override fun showLoading() {
 
     }
@@ -47,8 +47,8 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
 
     private fun initActivityInjection() {
 
-        activityComponent = DaggerActivityComponent.builder().appComponent((application as BaseApplication).appComponent).activityModule(
-            ActivityModule(this))
+        activityComponent = DaggerActivityComponent.builder().appComponent((activity?.application as BaseApplication).appComponent).activityModule(
+            activity?.let { ActivityModule(it) })
             .lifecycleProviderModule(LifecycleProviderModule(this))
             .build()
     }
