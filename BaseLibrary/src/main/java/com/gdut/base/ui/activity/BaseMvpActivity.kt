@@ -10,6 +10,7 @@ import com.gdut.base.injection.module.LifecycleProviderModule
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
 import com.gdut.base.widgets.ProgressLoading
+import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 /**
@@ -25,8 +26,8 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
         mLoadingDialog.hideLoading()
     }
 
-    override fun onError() {
-
+    override fun onError(text:String) {
+        toast(text)
     }
 
 

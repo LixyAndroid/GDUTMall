@@ -11,6 +11,7 @@ import com.gdut.user.injection.component.DaggerUserComponent
 import com.gdut.user.injection.module.UserModule
 import com.gdut.user.presenter.RegisterPresenter
 import com.gdut.user.presenter.view.RegisterView
+import com.kotlin.base.widgets.VerifyButton
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
@@ -26,6 +27,15 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(),RegisterView {
         mRegisterBtn.onClick{
             mPresenter.register(mMobileEt.text.toString(),mVerifyCodeEt.text.toString(),mPwdEt.text.toString())
         }
+
+        mGetVerifyCodeBtn.onClick {
+            mGetVerifyCodeBtn.requestSendVerifyNumber()
+        }
+
+
+
+
+
 
     }
 
