@@ -3,6 +3,7 @@ package com.gdut.user.injection.component
 import com.gdut.base.injection.PerComponentScope
 import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.user.injection.module.UserModule
+import com.gdut.user.ui.activity.LoginActivity
 import com.gdut.user.ui.activity.RegisterActivity
 import dagger.Component
 
@@ -14,4 +15,5 @@ import dagger.Component
 @Component(dependencies = arrayOf(ActivityComponent::class),modules = arrayOf(UserModule::class))
 interface UserComponent {
     fun inject(activity: RegisterActivity)
+    fun inject(activity: LoginActivity)
 }
