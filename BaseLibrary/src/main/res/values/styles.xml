@@ -18,6 +18,16 @@
         <item name="android:windowBackground">@color/common_black</item>
     </style>
 
+    <!-- 多状态视图样式-->
+    <style name="MultiStateStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <!--<item name="msv_loadingView">@layout/layout_state_loading</item>-->
+        <!--<item name="msv_emptyView">@layout/layout_state_empty</item>-->
+        <!--<item name="msv_errorView">@layout/layout_state_error</item>-->
+        <!--<item name="msv_viewState">loading</item>-->
+    </style>
+
 
 
     <!-- 加载弹框样式 -->
@@ -40,6 +50,26 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:overScrollMode">never</item>
+    </style>
+
+    <!-- 搜索输入框样式-->
+    <style name="SearchHeaderEtStyle">
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:textColorHint">@color/common_white</item>
+        <item name="android:background">@drawable/home_header_corner_bg</item>
+        <item name="android:paddingLeft">@dimen/common_padding</item>
+        <item name="android:paddingTop">@dimen/common_padding_small</item>
+        <item name="android:paddingBottom">@dimen/common_padding_small</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/common_margin_small</item>
+        <item name="android:layout_marginRight">@dimen/common_margin</item>
+        <item name="android:layout_marginBottom">@dimen/common_margin_small</item>
+        <item name="android:drawableLeft">@drawable/icon_search</item>
+        <item name="android:drawablePadding">@dimen/common_padding_middle</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLines">1</item>
     </style>
 
 
@@ -93,7 +123,17 @@
     <style name="LabelContentTextStyle" parent="@style/LabelTitleTextStyle">
         <item name="android:textColor">@color/text_light_dark</item>
     </style>
-
+    <!-- 横屏按钮样式，带不可用状态 -->
+    <!-- 按钮样式-->
+    <style name="FullBtnStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:background">@drawable/btn_common_selector</item>
+        <item name="android:padding">@dimen/common_padding_middle</item>
+        <item name="android:layout_margin">@dimen/common_margin</item>
+        <item name="android:enabled">false</item>
+    </style>
 
 
 </resources>
