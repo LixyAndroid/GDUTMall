@@ -25,6 +25,11 @@ class RegisterPresenter @Inject constructor():BasePresenter<RegisterView> () {
              业务逻辑
          */
 
+        if(!checkNetWork()){
+            println("网络不可用")
+            return
+        }
+
         mView.showLoading()
         userService.register(mobile,verifyCode,pwd)
             .execute(object :BaseSubscriber<Boolean>(mView){
