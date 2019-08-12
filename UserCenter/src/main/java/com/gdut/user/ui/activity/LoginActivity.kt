@@ -90,6 +90,7 @@ class LoginActivity  : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClic
 
     override fun onLoginResult(result: UserInfo) {
         toast("登录成功")
+        startActivity<UserInfoActivity>()
     }
 
 

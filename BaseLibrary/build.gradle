@@ -65,5 +65,12 @@ dependencies {
     //Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
+    //Circle ImageView
+    implementation "de.hdodenhof:circleimageview:$circle_imageView_version"
+    //Take Photo
+    implementation "com.jph.takephoto:takephoto_library:$take_photo_version"
+    //Alert View
+    implementation "com.bigkoo:alertview:$alert_view_version"
+
 
 }

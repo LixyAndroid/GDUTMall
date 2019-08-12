@@ -3,10 +3,7 @@ package com.gdut.user.injection.component
 import com.gdut.base.injection.PerComponentScope
 import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.user.injection.module.UserModule
-import com.gdut.user.ui.activity.ForgetPwdActivity
-import com.gdut.user.ui.activity.LoginActivity
-import com.gdut.user.ui.activity.RegisterActivity
-import com.gdut.user.ui.activity.ResetPwdActivity
+import com.gdut.user.ui.activity.*
 import dagger.Component
 
 /**
@@ -20,4 +17,5 @@ interface UserComponent {
     fun inject(activity: LoginActivity)
     fun inject(activity: ForgetPwdActivity)
     fun inject(activity: ResetPwdActivity)
+    fun inject(activity: UserInfoActivity)
 }

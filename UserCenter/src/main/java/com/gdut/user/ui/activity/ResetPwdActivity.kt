@@ -72,9 +72,9 @@ class ResetPwdActivity : BaseMvpActivity<ResetPwdPresenter>(), ResetPwdView {
     /**
      * 修改密码回调
      */
-
     override fun onResetPwdResult(result: String) {
         toast(result)
+        //栈顶复用
         startActivity(intentFor<LoginActivity>().singleTop().clearTop())
     }
 
