@@ -45,6 +45,7 @@ class LoginActivity  : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClic
         mLoginBtn.enable(mPwdEt,{isBtnEnable()})
 
         mLoginBtn.onClick(this)
+        //没法嵌套去引用
         mHeaderBar.getRightView().onClick(this)
         mForgetPwdTv.onClick(this)
 
@@ -70,7 +71,7 @@ class LoginActivity  : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClic
                 mPresenter.login(mMobileEt.text.toString(),mPwdEt.text.toString(),"")
             }
             R.id.mForgetPwdTv ->{
-               // startActivity<ForgetPwdActivity>()
+                startActivity<ForgetPwdActivity>()
             }
         }
     }
@@ -88,7 +89,7 @@ class LoginActivity  : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClic
      */
 
     override fun onLoginResult(result: UserInfo) {
-
+        toast("登录成功")
     }
 
 

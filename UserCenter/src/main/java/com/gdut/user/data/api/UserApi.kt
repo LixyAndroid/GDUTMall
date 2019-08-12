@@ -1,9 +1,7 @@
 package com.gdut.user.data.api
 
 import com.gdut.base.data.protocol.BaseResp
-import com.gdut.user.data.protocol.LoginReq
-import com.gdut.user.data.protocol.RegisterReq
-import com.gdut.user.data.protocol.UserInfo
+import com.gdut.user.data.protocol.*
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable
@@ -18,4 +16,11 @@ interface UserApi {
 
     @POST("userCenter/login")
     fun login(@Body req: LoginReq):Observable<BaseResp<UserInfo>>
+
+    @POST("userCenter/forgetPwd")
+    fun forgetPwd(@Body req: ForgerPwdReq):Observable<BaseResp<String>>
+
+    @POST("userCenter/resetPwd")
+    fun resetPwd(@Body req: ResetPwdReq):Observable<BaseResp<String>>
+
 }
