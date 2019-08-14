@@ -1,6 +1,7 @@
 package com.gdut.user.presenter
 
-import com.gdut.base.ext.execute
+
+import com.gdut.base.ext.excute
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.rx.BaseSubscriber
 import com.gdut.user.presenter.view.ForgetPwdView
@@ -33,7 +34,7 @@ class ForgetPwdPresenter @Inject constructor():BasePresenter<ForgetPwdView> () {
 
         mView.showLoading()
         userService.forgetPwd(mobile,verifyCode)
-            .execute(object :BaseSubscriber<Boolean>(mView){
+            .excute(object :BaseSubscriber<Boolean>(mView){
 
                 override fun onNext(t: Boolean) {
                     if (t){

@@ -72,5 +72,7 @@ dependencies {
     //Alert View
     implementation "com.bigkoo:alertview:$alert_view_version"
 
+    implementation 'com.qiniu:qiniu-android-sdk:7.3.+'
+
 
 }

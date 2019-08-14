@@ -3,9 +3,9 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               style="@style/MatchMatch.Vertical.Common">
     <com.gdut.base.widgets.HeaderBar android:id="@id/mHeaderBar"
-                                       app:titleText="个人信息"
-                                       app:rightText="@string/common_save"
-                                       style="@style/MatchWrap"/>
+                                     app:titleText="个人信息"
+                                     app:rightText="@string/common_save"
+                                     style="@style/MatchWrap"/>
     <RelativeLayout android:id="@+id/mUserIconView"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/common_margin"

@@ -7,5 +7,6 @@ import com.gdut.base.presenter.view.BaseView
  * date  2019/8/8 16:06
  */
 interface UserInfoView:BaseView {
+    fun onGetUploadTokenResult(result:String)
 
 }

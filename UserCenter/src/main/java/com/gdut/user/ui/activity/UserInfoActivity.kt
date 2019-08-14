@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat
 import android.util.Log
 import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnItemClickListener
+import com.gdut.base.common.BaseConstant
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.user.R
@@ -24,7 +25,12 @@ import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.compress.CompressConfig
 import com.jph.takephoto.model.TResult
 import com.kotlin.base.utils.DateUtils
+import com.kotlin.base.utils.GlideUtils
+import com.qiniu.android.http.ResponseInfo
+import com.qiniu.android.storage.UpCompletionHandler
+import com.qiniu.android.storage.UploadManager
 import kotlinx.android.synthetic.main.activity_user_info.*
+import org.json.JSONObject
 import java.io.File
 
 /**
@@ -33,9 +39,17 @@ import java.io.File
 
 class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, TakePhoto.TakeResultListener {
 
+
     private lateinit var mTakePhoto: TakePhoto
 
     private lateinit var mTempFile: File
+
+    private val mUploadManager: UploadManager by lazy {
+        UploadManager()
+    }
+
+    private lateinit var mLocalFile: String
+    private var mRemoteFile: String? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,6 +112,10 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
         Log.d("TakePhoto", result.image.originalPath)
         Log.d("TakePhoto", result.image.compressPath)
 
+        mLocalFile = result.image.compressPath
+
+        Log.d("test", mLocalFile)
+        mPresenter.getUploadToken()
 
     }
 
@@ -125,6 +143,18 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
 
         this.mTempFile = File(filesDir, tempFileName)
 
+    }
+
+    override fun onGetUploadTokenResult(result: String) {
+        mUploadManager.put(mLocalFile, null, result, object : UpCompletionHandler {
+            override fun complete(key: String?, info: ResponseInfo?, response: JSONObject?) {
+                mRemoteFile = BaseConstant.IMAGE_SERVER_ADDRESS + response?.get("hash")
+
+                Log.d("test", mRemoteFile)
+                GlideUtils.loadUrlImage(this@UserInfoActivity, mRemoteFile!!, mUserIconIv)
+            }
+
+        }, null)
     }
 
 
