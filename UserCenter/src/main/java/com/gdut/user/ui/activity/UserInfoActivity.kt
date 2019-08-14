@@ -16,6 +16,7 @@ import com.gdut.base.common.BaseConstant
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.user.R
+import com.gdut.user.data.protocol.UserInfo
 import com.gdut.user.injection.component.DaggerUserComponent
 import com.gdut.user.injection.module.UserModule
 import com.gdut.user.presenter.UserInfoPresenter
@@ -24,12 +25,16 @@ import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.compress.CompressConfig
 import com.jph.takephoto.model.TResult
+import com.kotlin.base.utils.AppPrefsUtils
 import com.kotlin.base.utils.DateUtils
 import com.kotlin.base.utils.GlideUtils
+import com.kotlin.provider.common.ProviderConstant
+import com.kotlin.user.utils.UserPrefsUtils
 import com.qiniu.android.http.ResponseInfo
 import com.qiniu.android.storage.UpCompletionHandler
 import com.qiniu.android.storage.UploadManager
 import kotlinx.android.synthetic.main.activity_user_info.*
+import org.jetbrains.anko.toast
 import org.json.JSONObject
 import java.io.File
 
@@ -48,8 +53,15 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
         UploadManager()
     }
 
-    private lateinit var mLocalFile: String
-    private var mRemoteFile: String? = null
+    private var mLocalFileUrl: String? = null
+    private var mRemoteFileUrl: String? = null
+
+    private var mUserIcon: String? = null
+    private var mUserName: String? = null
+    private var mUserMobile: String? = null
+    private var mUserGender: String? = null
+    private var mUserSign: String? = null
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,12 +73,14 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
 
         mTakePhoto = TakePhotoImpl(this, this)
 
-        initView()
 
+        initView()
         mTakePhoto.onCreate(savedInstanceState)
 
+        initData()
 
     }
+
 
     /**
      * 初始化视图
@@ -77,7 +91,41 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
             showAlertView()
         }
 
+        mHeaderBar.getRightView().onClick {
+            mPresenter.editUser(
+                mRemoteFileUrl!!,
+                mUserNameEt.text.toString(),
+                if (mGenderMaleRb.isChecked) "0" else "1",
+                mUserSignEt.text.toString()
+            )
+        }
 
+    }
+
+
+    private fun initData() {
+        mUserIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
+        mUserName = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
+        mUserMobile = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_MOBILE)
+        mUserGender = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_GENDER)
+        mUserSign = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_SIGN)
+
+
+        mRemoteFileUrl = mUserIcon
+        if (mUserIcon != "") {
+
+            GlideUtils.loadUrlImage(this, mUserIcon!!, mUserIconIv)
+        }
+        mUserNameEt.setText(mUserName)
+        mUserMobileTv.text = mUserMobile
+
+        if (mUserGender == "0") {
+            mGenderMaleRb.isChecked = true
+        } else {
+            mGenderFemaleRb.isChecked = true
+        }
+
+        mUserSignEt.setText(mUserSign)
     }
 
 
@@ -109,12 +157,11 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
 
 
     override fun takeSuccess(result: TResult) {
-        Log.d("TakePhoto", result.image.originalPath)
-        Log.d("TakePhoto", result.image.compressPath)
+//        Log.d("TakePhoto", result.image.originalPath)
+//        Log.d("TakePhoto", result.image.compressPath)
 
-        mLocalFile = result.image.compressPath
+        mLocalFileUrl = result.image.compressPath
 
-        Log.d("test", mLocalFile)
         mPresenter.getUploadToken()
 
     }
@@ -146,15 +193,23 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
     }
 
     override fun onGetUploadTokenResult(result: String) {
-        mUploadManager.put(mLocalFile, null, result, object : UpCompletionHandler {
+        mUploadManager.put(mLocalFileUrl, null, result, object : UpCompletionHandler {
             override fun complete(key: String?, info: ResponseInfo?, response: JSONObject?) {
-                mRemoteFile = BaseConstant.IMAGE_SERVER_ADDRESS + response?.get("hash")
+                mRemoteFileUrl = BaseConstant.IMAGE_SERVER_ADDRESS + response?.get("hash")
 
-                Log.d("test", mRemoteFile)
-                GlideUtils.loadUrlImage(this@UserInfoActivity, mRemoteFile!!, mUserIconIv)
+                //Log.d("test", mRemoteFileUrl)
+
+                GlideUtils.loadUrlImage(this@UserInfoActivity, mRemoteFileUrl!!, mUserIconIv)
+
+
             }
 
         }, null)
+    }
+
+    override fun onEditUserResult(result: UserInfo) {
+        toast("修改成功")
+        UserPrefsUtils.putUserInfo(result)
     }
 
 

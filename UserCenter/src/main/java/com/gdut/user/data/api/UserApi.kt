@@ -2,6 +2,7 @@ package com.gdut.user.data.api
 
 import com.gdut.base.data.protocol.BaseResp
 import com.gdut.user.data.protocol.*
+import com.kotlin.user.data.protocol.EditUserReq
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable
@@ -22,5 +23,8 @@ interface UserApi {
 
     @POST("userCenter/resetPwd")
     fun resetPwd(@Body req: ResetPwdReq):Observable<BaseResp<String>>
+
+    @POST("userCenter/editUser")
+    fun editUser(@Body req: EditUserReq):Observable<BaseResp<UserInfo>>
 
 }

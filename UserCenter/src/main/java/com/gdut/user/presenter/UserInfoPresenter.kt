@@ -40,6 +40,20 @@ class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>() {
     }
 
 
+    fun editUser(userIcon:String,userName:String,userGender:String,userSign:String){
+        if (!checkNetWork()){
+            return
+        }
+
+        mView.showLoading()
+        userService.editUser(userIcon,userName,userGender,userSign).excute(object :BaseSubscriber<UserInfo>(mView){
+            override fun onNext(t: UserInfo) {
+                mView.onEditUserResult(t)
+            }
+        },lifecycleProvider)
+    }
+
+
 
 }
 

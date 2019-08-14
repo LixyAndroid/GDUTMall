@@ -4,6 +4,7 @@ import com.gdut.base.data.net.RetrofitFactory
 import com.gdut.base.data.protocol.BaseResp
 import com.gdut.user.data.api.UserApi
 import com.gdut.user.data.protocol.*
+import com.kotlin.user.data.protocol.EditUserReq
 import rx.Observable
 import javax.inject.Inject
 
@@ -41,5 +42,9 @@ class UserRepository @Inject constructor() {
         //单例创建
         return RetrofitFactory.instance.create(UserApi::class.java)
             .resetPwd(ResetPwdReq(mobile,pwd))
+    }
+    fun editUser(userIcon:String,userName:String,userGender:String,userSign:String): Observable<BaseResp<UserInfo>>{
+        return RetrofitFactory.instance.create(UserApi::class.java)
+            .editUser(EditUserReq(userIcon,userName,userGender,userSign))
     }
 }
