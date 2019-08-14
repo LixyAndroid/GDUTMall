@@ -72,11 +72,8 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
         requestDangerousPermissions()
 
         mTakePhoto = TakePhotoImpl(this, this)
-
-
-        initView()
         mTakePhoto.onCreate(savedInstanceState)
-
+        initView()
         initData()
 
     }
@@ -102,7 +99,9 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
 
     }
 
-
+    /**
+     * 初始化数据
+     */
     private fun initData() {
         mUserIcon = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON)
         mUserName = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
