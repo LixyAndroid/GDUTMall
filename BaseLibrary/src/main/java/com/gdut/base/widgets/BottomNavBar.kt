@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
+import com.ashokvarma.bottomnavigation.ShapeBadgeItem
+import com.ashokvarma.bottomnavigation.TextBadgeItem
 import com.gdut.base.R
 
 /**
@@ -12,6 +14,9 @@ import com.gdut.base.R
  */
 class BottomNavBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : BottomNavigationBar(context, attrs, defStyleAttr) {
 
+
+    private val mCartBadge:TextBadgeItem
+    private val mMsgBadge:ShapeBadgeItem
 
     init {
         //首页
@@ -36,12 +41,22 @@ class BottomNavBar @JvmOverloads constructor(context: Context, attrs: AttributeS
             .setActiveColorResource(R.color.common_blue)
             .setInActiveColorResource(R.color.text_normal)
 
+        mCartBadge = TextBadgeItem()
+        cartItem.setBadgeItem(mCartBadge)
+
         //消息
         val msgItem = BottomNavigationItem(R.drawable.btn_nav_msg_press,resources.getString(R.string.nav_bar_msg))
             //未选中的
             .setInactiveIconResource(R.drawable.btn_nav_msg_normal)
             .setActiveColorResource(R.color.common_blue)
             .setInActiveColorResource(R.color.text_normal)
+
+        mMsgBadge = ShapeBadgeItem()
+        mMsgBadge.setShape(ShapeBadgeItem.SHAPE_OVAL)
+        msgItem.setBadgeItem(mMsgBadge)
+
+
+
 
         //我的
         val userItem = BottomNavigationItem(R.drawable.btn_nav_user_press,resources.getString(R.string.nav_bar_user))
@@ -65,6 +80,26 @@ class BottomNavBar @JvmOverloads constructor(context: Context, attrs: AttributeS
             .setFirstSelectedPosition(0)
             .initialise()
 
-
     }
+
+
+    fun checkCartBadge(count:Int){
+        if (count == 0){
+            mCartBadge.hide()
+        }else{
+            mCartBadge.show()
+            mCartBadge.setText("${count}")
+        }
+    }
+
+    fun checkMsgBadge(isVisible:Boolean){
+        if (isVisible){
+            mMsgBadge.show()
+        }else{
+            mCartBadge.hide()
+        }
+    }
+
+
+
 }
