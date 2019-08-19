@@ -86,6 +86,9 @@ dependencies {
     //底部导航
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
 
+    //Banner
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+
 
 
 }

@@ -4,6 +4,7 @@ package com.gdut.gdutmall.ui.activity
 import android.os.Bundle
 import com.gdut.base.ui.activity.BaseActivity
 import com.gdut.gdutmall.R
+import com.gdut.gdutmall.ui.fragment.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -19,13 +20,15 @@ class MainActivity : BaseActivity() {
         mBottomNavBar.checkMsgBadge(false)
         mBottomNavBar.checkCartBadge(20)
 
-        Observable.timer(2, TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {mBottomNavBar.checkMsgBadge(true)}
+        initView()
 
-        Observable.timer(5,TimeUnit.SECONDS)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {mBottomNavBar.checkCartBadge(0)}
 
+    }
+
+    private fun initView() {
+
+        val manager = supportFragmentManager.beginTransaction()
+        manager.replace(R.id.mContainer,HomeFragment())
+        manager.commit()
     }
 }
