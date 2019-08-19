@@ -12,7 +12,7 @@ const val HOME_BANNER_TWO =
 
 
 const val HOME_BANNER_THREE =
-    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1502876281925&di=f33e7ef8be268e90ffbffd315f5fb0a3&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F013e1b57d2731c0000018c1beeca11.jpg%40900w_1l_2o_100sh.jpg"
+    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566790498&di=8c3543a86bb246ce2b54a295d2cf4892&imgtype=jpg&er=1&src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F05%2F21%2F57%2F2359dec8a616d54.jpg"
 
 
 const val HOME_BANNER_FOUR =
