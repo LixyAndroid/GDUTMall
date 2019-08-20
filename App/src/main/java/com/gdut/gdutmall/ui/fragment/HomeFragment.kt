@@ -11,10 +11,9 @@ import com.kotlin.mall.common.HOME_BANNER_FOUR
 import com.kotlin.mall.common.HOME_BANNER_ONE
 import com.kotlin.mall.common.HOME_BANNER_THREE
 import com.kotlin.mall.common.HOME_BANNER_TWO
-import com.youth.banner.Banner
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
-import org.jetbrains.anko.find
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 /**
@@ -23,21 +22,31 @@ import org.jetbrains.anko.find
  */
 class HomeFragment : BaseFragment() {
 
-    private lateinit var mHomeBanner:Banner
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val rootView = inflater.inflate(R.layout.fragment_home,null)
 
-        initBanner(rootView)
-
-        return rootView
+        return inflater.inflate(R.layout.fragment_home, null)
     }
 
-    private fun initBanner(view: View) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initBanner()
+        initNews()
+    }
+
+    private fun initNews() {
+        //公告
+        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场","新用户立领1000元优惠卷"))
+
+
+    }
+
+    private fun initBanner() {
 
         //https://github.com/youth5201314/banner
-        mHomeBanner = view.find(R.id.mHomeBanner)
+
         mHomeBanner.setImageLoader(BannerImageLoader())
         mHomeBanner.setImages(listOf(HOME_BANNER_ONE, HOME_BANNER_TWO, HOME_BANNER_THREE, HOME_BANNER_FOUR))
 

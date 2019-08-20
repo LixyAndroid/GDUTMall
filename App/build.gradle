@@ -87,7 +87,8 @@ dependencies {
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
 
     //Banner
-    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation project(path: ':MessageCenter')  //最新版本
 
 
 
