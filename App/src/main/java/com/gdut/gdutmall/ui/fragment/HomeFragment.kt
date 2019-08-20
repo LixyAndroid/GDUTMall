@@ -1,6 +1,5 @@
 package com.gdut.gdutmall.ui.fragment
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
