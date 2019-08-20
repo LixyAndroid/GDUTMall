@@ -3,11 +3,13 @@ package com.gdut.base.ext
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import com.gdut.base.data.protocol.BaseResp
 import com.gdut.base.rx.BaseFunc
 import com.gdut.base.rx.BaseFuncBoolean
 import com.gdut.base.rx.BaseSubscriber
 import com.gdut.base.utils.DefaultTextWacher
+import com.kotlin.base.utils.GlideUtils
 import com.trello.rxlifecycle.LifecycleProvider
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -54,4 +56,11 @@ fun Button.enable(et: EditText,method: () -> Boolean){
             btn.isEnabled = method()
         }
     })
+}
+
+/*
+    ImageView加载网络图片
+ */
+fun ImageView.loadUrl(url: String) {
+    GlideUtils.loadUrlImage(context, url, this)
 }

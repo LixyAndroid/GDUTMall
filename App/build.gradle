@@ -61,6 +61,7 @@ dependencies {
     implementation "com.trello:rxlifecycle-components:$rx_lifecycle_version"
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
+    implementation 'com.android.support:cardview-v7:28.0.0'
     //Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
@@ -92,6 +93,9 @@ dependencies {
 
     //标签
     implementation 'com.github.shts:TriangleLabelView:1.1.2'
+
+    //画廊
+    implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
 
 
 
