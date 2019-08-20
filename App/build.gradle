@@ -90,6 +90,9 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation project(path: ':MessageCenter')  //最新版本
 
+    //标签
+    implementation 'com.github.shts:TriangleLabelView:1.1.2'
+
 
 
 }

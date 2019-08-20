@@ -80,6 +80,9 @@ dependencies {
     //Banner
     implementation 'com.youth.banner:banner:1.4.10'  //最新版本
 
+    //标签
+    implementation 'com.github.shts:TriangleLabelView:1.1.2'
+
 
 
 }
