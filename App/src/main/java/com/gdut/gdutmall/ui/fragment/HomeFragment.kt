@@ -74,6 +74,7 @@ class HomeFragment : BaseFragment() {
         mHomeDiscountRv.adapter = discountAdapter
         discountAdapter?.setData(mutableListOf(HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE,
             HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE))
+
     }
 
 

@@ -44,8 +44,6 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
 
-
-
     //Retrofit
     implementation "com.squareup.okhttp3:okhttp:${ok_http_version}"
     implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
@@ -96,7 +94,5 @@ dependencies {
 
     //画廊
     implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
-
-
 
 }
