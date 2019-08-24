@@ -24,7 +24,11 @@ import me.crosswall.lib.coverflow.CoverFlow
 class HomeFragment : BaseFragment() {
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
         return inflater.inflate(R.layout.fragment_home, null)
@@ -41,7 +45,7 @@ class HomeFragment : BaseFragment() {
 
     private fun initNews() {
         //公告
-        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场","新用户立领1000元优惠卷"))
+        mNewsFlipperView.setData(arrayOf("夏日炎炎，第一波福利还有30秒到达战场", "新用户立领1000元优惠卷"))
 
 
     }
@@ -51,7 +55,14 @@ class HomeFragment : BaseFragment() {
         //https://github.com/youth5201314/banner
 
         mHomeBanner.setImageLoader(BannerImageLoader())
-        mHomeBanner.setImages(listOf(HOME_BANNER_ONE, HOME_BANNER_TWO, HOME_BANNER_THREE, HOME_BANNER_FOUR))
+        mHomeBanner.setImages(
+            listOf(
+                HOME_BANNER_ONE,
+                HOME_BANNER_TWO,
+                HOME_BANNER_THREE,
+                HOME_BANNER_FOUR
+            )
+        )
 
         mHomeBanner.setBannerAnimation(Transformer.Accordion)
         mHomeBanner.setDelayTime(2000)
@@ -63,7 +74,7 @@ class HomeFragment : BaseFragment() {
 
     }
 
-    private fun initDiscount(){
+    private fun initDiscount() {
         val manager = LinearLayoutManager(context)
         manager.orientation = LinearLayoutManager.HORIZONTAL
         mHomeDiscountRv.layoutManager = manager
@@ -72,8 +83,12 @@ class HomeFragment : BaseFragment() {
         val discountAdapter = activity?.let { HomeDiscountAdapter(it) }
 
         mHomeDiscountRv.adapter = discountAdapter
-        discountAdapter?.setData(mutableListOf(HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE,
-            HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE))
+        discountAdapter?.setData(
+            mutableListOf(
+                HOME_DISCOUNT_ONE, HOME_DISCOUNT_TWO, HOME_DISCOUNT_THREE,
+                HOME_DISCOUNT_FOUR, HOME_DISCOUNT_FIVE
+            )
+        )
 
     }
 
@@ -81,18 +96,25 @@ class HomeFragment : BaseFragment() {
     /*
        初始化主题
     */
-    private fun initTopic(){
+    private fun initTopic() {
         //话题
         mTopicPager.adapter = context?.let {
             TopicAdapter(
                 it,
-                listOf(HOME_TOPIC_ONE, HOME_TOPIC_TWO, HOME_TOPIC_THREE, HOME_TOPIC_FOUR, HOME_TOPIC_FIVE)
+                listOf(
+                    HOME_TOPIC_ONE,
+                    HOME_TOPIC_TWO,
+                    HOME_TOPIC_THREE,
+                    HOME_TOPIC_FOUR,
+                    HOME_TOPIC_FIVE
+                )
             )
         }
         mTopicPager.currentItem = 1
         mTopicPager.offscreenPageLimit = 5
 
-        CoverFlow.Builder().with(mTopicPager).scale(0.3f).pagerMargin(-30.0f).spaceSize(0.0f).build()
+        CoverFlow.Builder().with(mTopicPager).scale(0.3f).pagerMargin(-30.0f).spaceSize(0.0f)
+            .build()
     }
 
 }

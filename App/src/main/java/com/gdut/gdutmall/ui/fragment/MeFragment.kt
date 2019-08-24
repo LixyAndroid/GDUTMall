@@ -10,6 +10,7 @@ import com.gdut.base.ext.loadUrl
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.fragment.BaseFragment
 import com.gdut.gdutmall.R
+import com.gdut.gdutmall.ui.activity.SettingActivity
 import com.gdut.provider.common.isLogined
 import com.gdut.user.ui.activity.LoginActivity
 import com.gdut.user.ui.activity.UserInfoActivity
@@ -43,6 +44,7 @@ class MeFragment : BaseFragment(), View.OnClickListener {
     private fun initView() {
         mUserIconIv.onClick(this)
         mUserNameTv.onClick(this)
+        mSettingTv.onClick(this)
 
     }
 
@@ -91,6 +93,17 @@ class MeFragment : BaseFragment(), View.OnClickListener {
                     // 获取class是使用::反射
                     startActivity(intent)
                 }
+            }
+
+
+            R.id.mSettingTv ->{
+                //startActivity<SettingActivity>()
+
+                val intent = Intent()
+                //获取intent对象
+                intent.setClass(context, SettingActivity::class.java)
+                // 获取class是使用::反射
+                startActivity(intent)
             }
         }
 
