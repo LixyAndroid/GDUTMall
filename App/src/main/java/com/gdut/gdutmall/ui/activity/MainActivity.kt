@@ -8,6 +8,7 @@ import com.gdut.base.ui.activity.BaseActivity
 import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.fragment.HomeFragment
 import com.gdut.gdutmall.ui.fragment.MeFragment
+import com.gdut.goods.ui.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -15,7 +16,7 @@ class MainActivity : BaseActivity() {
 
     private val mStack = Stack<Fragment>()
     private val mHomeFragment by lazy { HomeFragment() }
-    private val mCategoryFragment by lazy { HomeFragment() }
+    private val mCategoryFragment by lazy { CategoryFragment() }
     private val mCartFragment by lazy { HomeFragment() }
     private val mMsgFragment by lazy { HomeFragment() }
     private val mMeFragment by lazy { MeFragment() }

@@ -94,5 +94,6 @@ dependencies {
 
     //画廊
     implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
+    implementation project(path: ':Goodscenter')
 
 }
