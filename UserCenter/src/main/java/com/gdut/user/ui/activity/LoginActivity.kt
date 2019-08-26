@@ -11,7 +11,7 @@ import com.gdut.user.injection.component.DaggerUserComponent
 import com.gdut.user.injection.module.UserModule
 import com.gdut.user.presenter.LoginPresenter
 import com.gdut.user.presenter.view.LoginView
-import com.kotlin.user.utils.UserPrefsUtils
+import com.gdut.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast

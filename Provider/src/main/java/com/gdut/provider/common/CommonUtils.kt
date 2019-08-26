@@ -1,7 +1,6 @@
 package com.gdut.provider.common
 
-import com.kotlin.base.utils.AppPrefsUtils
-import com.kotlin.provider.common.ProviderConstant
+import com.gdut.base.utils.AppPrefsUtils
 
 /**
  * @author  Li Xuyang
@@ -9,6 +8,6 @@ import com.kotlin.provider.common.ProviderConstant
  * 全局函数
  */
 
-fun isLogined() :Boolean{
+fun isLogined(): Boolean {
     return AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON).isNotEmpty()
 }

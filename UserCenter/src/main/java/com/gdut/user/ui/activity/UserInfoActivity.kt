@@ -25,11 +25,11 @@ import com.jph.takephoto.app.TakePhoto
 import com.jph.takephoto.app.TakePhotoImpl
 import com.jph.takephoto.compress.CompressConfig
 import com.jph.takephoto.model.TResult
-import com.kotlin.base.utils.AppPrefsUtils
-import com.kotlin.base.utils.DateUtils
-import com.kotlin.base.utils.GlideUtils
-import com.kotlin.provider.common.ProviderConstant
-import com.kotlin.user.utils.UserPrefsUtils
+import com.gdut.base.utils.AppPrefsUtils
+import com.gdut.base.utils.DateUtils
+import com.gdut.base.utils.GlideUtils
+import com.gdut.provider.common.ProviderConstant
+import com.gdut.user.utils.UserPrefsUtils
 import com.qiniu.android.http.ResponseInfo
 import com.qiniu.android.storage.UpCompletionHandler
 import com.qiniu.android.storage.UploadManager

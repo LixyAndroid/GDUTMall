@@ -1,7 +1,7 @@
 package com.gdut.base.data.net
 
 import com.gdut.base.common.BaseConstant
-import com.kotlin.base.utils.AppPrefsUtils
+import com.gdut.base.utils.AppPrefsUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

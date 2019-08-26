@@ -9,7 +9,7 @@ import com.gdut.base.rx.BaseFunc
 import com.gdut.base.rx.BaseFuncBoolean
 import com.gdut.base.rx.BaseSubscriber
 import com.gdut.base.utils.DefaultTextWacher
-import com.kotlin.base.utils.GlideUtils
+import com.gdut.base.utils.GlideUtils
 import com.trello.rxlifecycle.LifecycleProvider
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers

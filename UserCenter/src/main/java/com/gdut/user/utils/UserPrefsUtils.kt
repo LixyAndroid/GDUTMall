@@ -1,9 +1,9 @@
-package com.kotlin.user.utils
+package com.gdut.user.utils
 
 import com.gdut.base.common.BaseConstant
 import com.gdut.user.data.protocol.UserInfo
-import com.kotlin.base.utils.AppPrefsUtils
-import com.kotlin.provider.common.ProviderConstant
+import com.gdut.base.utils.AppPrefsUtils
+import com.gdut.provider.common.ProviderConstant
 
 
 /*

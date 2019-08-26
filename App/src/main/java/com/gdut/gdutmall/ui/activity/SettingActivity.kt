@@ -5,7 +5,7 @@ import com.gdut.base.ext.onClick
 import com.gdut.base.ui.activity.BaseActivity
 import com.gdut.gdutmall.R
 import com.gdut.provider.common.isLogined
-import com.kotlin.user.utils.UserPrefsUtils
+import com.gdut.user.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_setting.*
 import org.jetbrains.anko.toast
 

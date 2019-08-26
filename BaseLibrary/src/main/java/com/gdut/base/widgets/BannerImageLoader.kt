@@ -2,7 +2,7 @@ package com.kotlin.base.widgets
 
 import android.content.Context
 import android.widget.ImageView
-import com.kotlin.base.utils.GlideUtils
+import com.gdut.base.utils.GlideUtils
 import com.youth.banner.loader.ImageLoader
 
 /*

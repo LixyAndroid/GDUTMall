@@ -1,4 +1,4 @@
-package com.kotlin.base.utils
+package com.gdut.base.utils
 
 import android.content.Context
 import android.widget.ImageView

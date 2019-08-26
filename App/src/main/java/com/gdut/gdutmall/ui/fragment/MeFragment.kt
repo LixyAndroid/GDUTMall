@@ -14,8 +14,8 @@ import com.gdut.gdutmall.ui.activity.SettingActivity
 import com.gdut.provider.common.isLogined
 import com.gdut.user.ui.activity.LoginActivity
 import com.gdut.user.ui.activity.UserInfoActivity
-import com.kotlin.base.utils.AppPrefsUtils
-import com.kotlin.provider.common.ProviderConstant
+import com.gdut.base.utils.AppPrefsUtils
+import com.gdut.provider.common.ProviderConstant
 import kotlinx.android.synthetic.main.fragment_me.*
 
 

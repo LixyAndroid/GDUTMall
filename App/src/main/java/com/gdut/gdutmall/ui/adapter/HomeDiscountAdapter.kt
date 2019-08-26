@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gdut.gdutmall.R
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
-import com.kotlin.base.utils.GlideUtils
+import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
+import com.gdut.base.utils.GlideUtils
 import kotlinx.android.synthetic.main.layout_home_discount_item.view.*
 
 /**
