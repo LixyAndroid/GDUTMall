@@ -1,4 +1,4 @@
-package com.kotlin.goods.data.protocol
+package com.gdut.goods.data.protocol
 
 /*
     获取分类列表请求，parentId为0是一级分类

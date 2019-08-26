@@ -4,7 +4,7 @@ package com.gdut.goods.service.impl
 import com.gdut.base.ext.convert
 import com.gdut.goods.data.repository.CategoryRepository
 import com.gdut.goods.service.CategoryService
-import com.kotlin.goods.data.protocol.Category
+import com.gdut.goods.data.protocol.Category
 import rx.Observable
 import javax.inject.Inject
 

@@ -4,9 +4,10 @@ package com.gdut.goods.presenter
 import com.gdut.base.ext.excute
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.rx.BaseSubscriber
+import com.gdut.goods.data.protocol.Category
 import com.gdut.goods.presenter.view.CategoryView
 import com.gdut.goods.service.CategoryService
-import com.kotlin.goods.data.protocol.Category
+
 import javax.inject.Inject
 
 

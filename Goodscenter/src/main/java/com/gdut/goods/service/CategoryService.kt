@@ -1,7 +1,7 @@
 package com.gdut.goods.service
 
 
-import com.kotlin.goods.data.protocol.Category
+import com.gdut.goods.data.protocol.Category
 import rx.Observable
 
 

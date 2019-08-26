@@ -1,9 +1,9 @@
-package com.kotlin.goods.data.api
+package com.gdut.goods.data.api
 
 
 import com.gdut.base.data.protocol.BaseResp
-import com.kotlin.goods.data.protocol.Category
-import com.kotlin.goods.data.protocol.GetCategoryReq
+import com.gdut.goods.data.protocol.Category
+import com.gdut.goods.data.protocol.GetCategoryReq
 import retrofit2.http.Body
 import retrofit2.http.POST
 import rx.Observable

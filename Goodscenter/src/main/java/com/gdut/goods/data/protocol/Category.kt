@@ -1,4 +1,4 @@
-package com.kotlin.goods.data.protocol
+package com.gdut.goods.data.protocol
 
 /*
      商品分类

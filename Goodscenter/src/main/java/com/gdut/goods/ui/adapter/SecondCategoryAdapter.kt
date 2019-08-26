@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.gdut.base.ext.loadUrl
+import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
 import com.gdut.goods.R
-import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
+import com.gdut.goods.data.protocol.Category
 
 
-import com.kotlin.goods.data.protocol.Category
 import kotlinx.android.synthetic.main.layout_second_category_item.view.*
 
 

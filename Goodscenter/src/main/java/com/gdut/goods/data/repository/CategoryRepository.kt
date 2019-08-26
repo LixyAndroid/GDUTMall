@@ -2,9 +2,9 @@ package com.gdut.goods.data.repository
 
 import com.gdut.base.data.net.RetrofitFactory
 import com.gdut.base.data.protocol.BaseResp
-import com.kotlin.goods.data.api.CategoryApi
-import com.kotlin.goods.data.protocol.Category
-import com.kotlin.goods.data.protocol.GetCategoryReq
+import com.gdut.goods.data.api.CategoryApi
+import com.gdut.goods.data.protocol.Category
+import com.gdut.goods.data.protocol.GetCategoryReq
 import rx.Observable
 import javax.inject.Inject
 
