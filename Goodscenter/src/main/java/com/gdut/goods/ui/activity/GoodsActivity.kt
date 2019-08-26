@@ -6,6 +6,7 @@ import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.gdut.base.ext.startLoading
 import com.gdut.base.ui.activity.BaseMvpActivity
+import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
 import com.gdut.goods.R
 import com.gdut.goods.common.GoodsConstant
 import com.gdut.goods.data.protocol.Goods
@@ -16,6 +17,7 @@ import com.gdut.goods.presenter.view.GoodsListView
 import com.gdut.goods.ui.adapter.GoodsAdapter
 import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.activity_goods.*
+import org.jetbrains.anko.startActivity
 
 /**
  * @author  Li Xuyang
@@ -46,6 +48,13 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
         mGoodsRv.layoutManager = GridLayoutManager(this, 2)
         mGoodsaAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = mGoodsaAdapter
+
+        mGoodsaAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
+            override fun onItemClick(item: Goods, position: Int) {
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
+            }
+
+        })
 
     }
 
@@ -91,7 +100,6 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
                 mGoodsaAdapter.dataList.addAll(result)
                 mGoodsaAdapter.notifyDataSetChanged()
             }
-
 
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {

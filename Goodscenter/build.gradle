@@ -60,10 +60,15 @@ dependencies {
     implementation "com.trello:rxlifecycle-kotlin:$rx_lifecycle_version"
     implementation "com.trello:rxlifecycle-components:$rx_lifecycle_version"
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
 
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 
     //上下拉刷新
     implementation 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
+
+
+    //Banner
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
 }

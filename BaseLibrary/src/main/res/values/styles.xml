@@ -86,7 +86,7 @@
         </item>
     </style>
     <!-- TabLayout文字样式-->
-    <style name="TabLayoutTextStyle">
+    <style name="TabsStyle">
         <item name="android:textSize">@dimen/text_big_size</item>
     </style>
 
