@@ -1,14 +1,18 @@
 package com.gdut.gdutmall.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.gdut.base.ext.onClick
 import com.gdut.base.ui.fragment.BaseFragment
 import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.adapter.HomeDiscountAdapter
 import com.gdut.gdutmall.ui.adapter.TopicAdapter
+import com.gdut.goods.ui.activity.SearchGoodsActivity
 import com.kotlin.base.widgets.BannerImageLoader
 import com.kotlin.mall.common.*
 import com.youth.banner.BannerConfig
@@ -37,11 +41,34 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         initBanner()
         initNews()
         initDiscount()
         initTopic()
     }
+
+
+    /*
+       初始化视图
+    */
+    private fun initView() {
+        mSearchEt.onClick {
+           // startActivity<SearchGoodsActivity>()
+
+
+            val intent = Intent()
+            //获取intent对象
+            intent.setClass(context, SearchGoodsActivity::class.java)
+            // 获取class是使用::反射
+            startActivity(intent)
+        }
+
+        mScanIv.onClick {
+            Toast.makeText(context,R.string.coming_soon_tip,Toast.LENGTH_LONG).show()
+        }
+    }
+
 
     private fun initNews() {
         //公告
