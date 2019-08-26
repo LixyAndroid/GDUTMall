@@ -20,7 +20,6 @@ class GoodsListPresenter @Inject constructor() : BasePresenter<GoodsListView>() 
     lateinit var goodsService: GoodsService
 
 
-
     fun getGoodsList(categoryId: Int, pageNo: Int) {
 
         /*
@@ -43,6 +42,27 @@ class GoodsListPresenter @Inject constructor() : BasePresenter<GoodsListView>() 
             }, lifecycleProvider)
     }
 
+    fun getGoodsListByKeyword(keyword: String, pageNo: Int) {
+
+        /*
+             业务逻辑
+         */
+
+        if (!checkNetWork()) {
+            return
+        }
+
+        mView.showLoading()
+        goodsService.getGoodsListByKeyword(keyword, pageNo)
+            .excute(object : BaseSubscriber<MutableList<Goods>?>(mView) {
+
+                override fun onNext(t: MutableList<Goods>?) {
+                    mView.onGetGoodsListResult(t)
+
+
+                }
+            }, lifecycleProvider)
+    }
 
 }
 
