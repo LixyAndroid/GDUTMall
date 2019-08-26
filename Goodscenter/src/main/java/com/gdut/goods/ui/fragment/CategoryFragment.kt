@@ -9,19 +9,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.gdut.base.ext.setVisible
 import com.gdut.base.ext.startLoading
+import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
 import com.gdut.base.ui.fragment.BaseMvpFragment
 import com.gdut.goods.R
+import com.gdut.goods.common.GoodsConstant
+import com.gdut.goods.data.protocol.Category
 import com.gdut.goods.injection.component.DaggerCategoryComponent
 import com.gdut.goods.injection.module.CategoryModule
 import com.gdut.goods.presenter.CategoryPresenter
 import com.gdut.goods.presenter.view.CategoryView
+import com.gdut.goods.ui.activity.GoodsActivity
 import com.gdut.goods.ui.adapter.SecondCategoryAdapter
 import com.gdut.goods.ui.adapter.TopCategoryAdapter
 import com.kennyc.view.MultiStateView
-import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
-import com.gdut.goods.data.protocol.Category
-import com.gdut.goods.ui.activity.GoodsActivity
-
 import kotlinx.android.synthetic.main.fragment_category.*
 
 
@@ -91,14 +91,12 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
             BaseRecyclerViewAdapter.OnItemClickListener<Category> {
             override fun onItemClick(item: Category, position: Int) {
 
-               // startActivity<GoodsActivity>("categoryId" to item.id)
-
+                // startActivity<GoodsActivity>("categoryId" to item.id)
 
                 val intent = Intent()
                 //获取intent对象
                 intent.setClass(context, GoodsActivity::class.java)
-
-                intent.putExtra("categoryId",item.id)
+                intent.putExtra(GoodsConstant.KEY_CATEGORY_ID, item.id)
                 startActivity(intent)
             }
         })
