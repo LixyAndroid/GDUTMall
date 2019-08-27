@@ -6,6 +6,7 @@ import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.goods.injection.module.CartModule
 import com.gdut.goods.injection.module.GoodsModule
 import com.gdut.goods.ui.activity.GoodsActivity
+import com.gdut.goods.ui.fragment.CartFragment
 import com.gdut.goods.ui.fragment.GoodsDetailTabOneFragment
 import dagger.Component
 
@@ -20,5 +21,7 @@ import dagger.Component
     modules = arrayOf(CartModule::class)
 )
 interface CartComponent {
+
+    fun inject(fragment: CartFragment)
 
 }

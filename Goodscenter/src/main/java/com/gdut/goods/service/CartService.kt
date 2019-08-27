@@ -1,5 +1,7 @@
 package com.gdut.goods.service
 
+import com.gdut.base.data.protocol.BaseResp
+import com.gdut.goods.data.protocol.CartGoods
 import rx.Observable
 
 /**
@@ -14,4 +16,6 @@ interface CartService {
         goodsId: Int, goodsDesc: String, goodsIcon: String, goodsPrice: Long,
         goodsCount: Int, goodsSku: String
     ): Observable<Int>
+
+    fun getCartList(): Observable<MutableList<CartGoods>?>
 }
