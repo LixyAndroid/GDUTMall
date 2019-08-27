@@ -6,7 +6,7 @@
             android:id="@+id/mHeaderBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/common_header_bar_height"
-            android:background="@color/common_blue">
+            android:background="@color/colorPrimaryDark">
         <ImageView
                 android:id="@+id/mLeftIv"
                 style="@style/WrapMatch"

@@ -77,7 +77,7 @@
     <style name="SearchHeaderStyle">
         <item name="android:gravity">center_vertical</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:background">@color/common_blue</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:paddingTop">@dimen/common_padding_small</item>
         <item name="android:paddingRight">@dimen/common_padding</item>
         <item name="android:paddingBottom">@dimen/common_padding_small</item>
