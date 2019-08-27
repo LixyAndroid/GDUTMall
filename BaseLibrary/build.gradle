@@ -94,5 +94,10 @@ dependencies {
     //上下拉刷新
     implementation 'cn.bingoogolapple:bga-refreshlayout:1.1.8@aar'
 
+    implementation 'ren.qinc.numberbutton:numberbutton:0.0.1'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    //Kotlin Bus
+    implementation 'com.eightbitlab:rxbus:1.0.2'
+
 
 }
