@@ -23,7 +23,7 @@ import q.rorbin.badgeview.QBadgeView
  */
 class GoodsDetailActivity : BaseActivity() {
 
-    private lateinit var mCartBdage:QBadgeView
+    private lateinit var mCartBdage: QBadgeView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,6 @@ class GoodsDetailActivity : BaseActivity() {
         initObserve()
         loadCartSize()
     }
-
 
 
     private fun initView() {
@@ -48,7 +47,6 @@ class GoodsDetailActivity : BaseActivity() {
                 Bus.send(AddCartEvent())
             }
         }
-
 
         mCartBdage = QBadgeView(this)
     }
@@ -71,9 +69,10 @@ class GoodsDetailActivity : BaseActivity() {
 
     private fun setCartBadge() {
         mCartBdage.badgeGravity = Gravity.END or Gravity.TOP
-        mCartBdage.setGravityOffset(22f,-2f,true)
-        mCartBdage.setBadgeTextSize(6f,true)
-        mCartBdage.bindTarget(mEnterCartTv).badgeNumber = AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
+        mCartBdage.setGravityOffset(22f, -2f, true)
+        mCartBdage.setBadgeTextSize(10f, true)
+        mCartBdage.bindTarget(mEnterCartTv).badgeNumber =
+            AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE)
 
     }
 
