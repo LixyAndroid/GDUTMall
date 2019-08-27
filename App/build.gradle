@@ -96,4 +96,6 @@ dependencies {
     implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.5'
     implementation project(path: ':Goodscenter')
 
+    //Kotlin Bus
+    implementation 'com.eightbitlab:rxbus:1.0.2'
 }

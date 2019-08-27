@@ -109,4 +109,8 @@ dependencies {
     implementation "com.alibaba:arouter-api:$arouter_api_version"
     kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 
+    //BadgeView
+    implementation 'q.rorbin:badgeview:1.1.3'
+
+
 }

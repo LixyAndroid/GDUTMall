@@ -4,10 +4,16 @@ package com.gdut.gdutmall.ui.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.gdut.base.ui.activity.BaseActivity
+import com.gdut.base.utils.AppPrefsUtils
 import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.fragment.HomeFragment
 import com.gdut.gdutmall.ui.fragment.MeFragment
+import com.gdut.goods.common.GoodsConstant
+import com.gdut.goods.event.AddCartEvent
+import com.gdut.goods.event.UpdateCartSizeEvent
 import com.gdut.goods.ui.fragment.CategoryFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -26,14 +32,11 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
 
-        mBottomNavBar.checkMsgBadge(false)
-        mBottomNavBar.checkCartBadge(20)
-
-        //  initView()
         initFragment()
         initBottomNav()
         changeFragment(0)
-
+        initObserve()
+        loadCartSize()
 
     }
 
@@ -55,12 +58,6 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun initView() {
-
-        val manager = supportFragmentManager.beginTransaction()
-        manager.replace(R.id.mContainer, HomeFragment())
-        manager.commit()
-    }
 
     private fun initBottomNav() {
         mBottomNavBar.setTabSelectedListener(object : BottomNavigationBar.OnTabSelectedListener {
@@ -89,5 +86,26 @@ class MainActivity : BaseActivity() {
         manager.show(mStack[position])
         manager.commit()
 
+    }
+
+
+    private fun initObserve() {
+        Bus.observe<UpdateCartSizeEvent>()
+
+
+        Bus.observe<AddCartEvent>()
+            .subscribe {
+                loadCartSize()
+            }.registerInBus(this)
+    }
+
+
+    private fun loadCartSize() {
+        mBottomNavBar.checkCartBadge(AppPrefsUtils.getInt(GoodsConstant.SP_CART_SIZE))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Bus.unregister(this)
     }
 }
