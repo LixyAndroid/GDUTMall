@@ -30,6 +30,7 @@ open class BaseActivity :RxAppCompatActivity(){
     //获取Window中视图content
     val contentView:View
         get() {
+            //加上android，否则会报空异常
             val content = find<FrameLayout>(android.R.id.content)
             return content.getChildAt(0)
         }
