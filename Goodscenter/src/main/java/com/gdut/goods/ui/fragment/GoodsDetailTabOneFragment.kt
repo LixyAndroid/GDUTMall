@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.widget.Toast
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.gdut.base.ext.onClick
@@ -170,7 +171,7 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
 
         Bus.observe<AddCartEvent>()
             .subscribe {
-                //  addCart()
+                 addCart()
             }.registerInBus(this)
     }
 
@@ -182,12 +183,21 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
         Bus.unregister(this)
     }
 
+    private fun addCart(){
+        mCurGoods?.let {
+            mPresenter.addCart(it.id,
+                it.goodsDesc,it.goodsDefaultIcon,it.goodsDefaultPrice,mSkuPop.getSelectCount(),mSkuPop.getSelectSku()
+                )
+        }
+    }
+
 
     /*
         加入购物车 回调
      */
     override fun onAddCartResult(result: Int) {
-        Bus.send(UpdateCartSizeEvent())
+       // Bus.send(UpdateCartSizeEvent())
+        Toast.makeText(context,"Cart---$result",Toast.LENGTH_LONG).show()
     }
 
 

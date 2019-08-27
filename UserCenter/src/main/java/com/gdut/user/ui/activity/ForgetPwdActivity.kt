@@ -26,7 +26,6 @@ class ForgetPwdActivity : BaseMvpActivity<ForgetPwdPresenter>(), ForgetPwdView, 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forget_pwd)
 
-
         initView()
 
     }

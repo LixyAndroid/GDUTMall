@@ -1,5 +1,6 @@
 package com.gdut.provider.common
 
+import com.gdut.base.common.BaseConstant
 import com.gdut.base.utils.AppPrefsUtils
 
 /**
@@ -9,5 +10,5 @@ import com.gdut.base.utils.AppPrefsUtils
  */
 
 fun isLogined(): Boolean {
-    return AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON).isNotEmpty()
+    return AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN).isNotEmpty()
 }

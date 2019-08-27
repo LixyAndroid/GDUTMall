@@ -11,16 +11,14 @@ import dagger.Component
 
 /**
  * @author  Li Xuyang
- * date  2019/8/26 15:04
+ * date  2019/8/27 17:05
  * 商品分类Component
  */
 @PerComponentScope
 @Component(
     dependencies = arrayOf(ActivityComponent::class),
-    modules = arrayOf(GoodsModule::class,CartModule::class)
+    modules = arrayOf(CartModule::class)
 )
-interface GoodsComponent {
-    fun inject(activity: GoodsActivity)
-    fun inject(fragment: GoodsDetailTabOneFragment)
+interface CartComponent {
 
 }

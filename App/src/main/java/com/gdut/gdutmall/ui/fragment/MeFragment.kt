@@ -60,11 +60,8 @@ class MeFragment : BaseFragment(), View.OnClickListener {
             if (userIcon.isNotEmpty()) {
                 mUserIconIv.loadUrl(userIcon)
             }
-
             mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NAME)
-
         } else {
-
             mUserIconIv.setImageResource(R.drawable.icon_default_user)
             mUserNameTv.text = getString(R.string.un_login_text)
         }
