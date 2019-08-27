@@ -2,9 +2,11 @@ package com.gdut.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.gdut.base.ext.enable
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.activity.BaseMvpActivity
+import com.gdut.provider.router.RouterPath.UserCenter.Companion.PATH_LOGIN
 import com.gdut.user.R
 import com.gdut.user.data.protocol.UserInfo
 import com.gdut.user.injection.component.DaggerUserComponent
@@ -21,6 +23,7 @@ import org.jetbrains.anko.toast
  * date  2019/8/12 14:35
  * 登录界面
  */
+@Route(path = PATH_LOGIN)
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClickListener {
 
 

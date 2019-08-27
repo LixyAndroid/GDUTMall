@@ -2,6 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
@@ -15,6 +22,12 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -76,4 +89,8 @@ dependencies {
     implementation 'com.hyman:flowlayout-lib:1.1.2'
     //Kotlin Bus
     implementation 'com.eightbitlab:rxbus:1.0.2'
+
+    //ARouter
+    implementation "com.alibaba:arouter-api:$arouter_api_version"
+    kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
 }
