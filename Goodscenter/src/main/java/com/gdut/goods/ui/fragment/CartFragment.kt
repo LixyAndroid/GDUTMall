@@ -10,9 +10,11 @@ import com.eightbitlab.rxbus.registerInBus
 import com.gdut.base.ext.onClick
 import com.gdut.base.ext.startLoading
 import com.gdut.base.ui.fragment.BaseMvpFragment
+import com.gdut.base.utils.YuanFenConverter
 import com.gdut.goods.R
 import com.gdut.goods.data.protocol.CartGoods
 import com.gdut.goods.event.CartAllCheckedEvent
+import com.gdut.goods.event.UpdateTotalPriceEvent
 import com.gdut.goods.injection.component.DaggerCartComponent
 import com.gdut.goods.injection.module.CartModule
 import com.gdut.goods.presenter.CartListPresenter
@@ -32,6 +34,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
 
     private lateinit var mAdapter: CartGoodsAdapter
 
+    private var mTotalPrice:Long = 0
 
     /*
           Dagger注册
@@ -76,6 +79,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
                 item.isSelected = mAllCheckedCb.isChecked
             }
             mAdapter.notifyDataSetChanged()
+            updateTotalPrice()
         }
 
     }
@@ -92,18 +96,33 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
     private fun initObserve() {
         Bus.observe<CartAllCheckedEvent>().subscribe { t: CartAllCheckedEvent ->
             run {
-
                 mAllCheckedCb.isChecked = t.isAllChecked
-
+                updateTotalPrice()
             }
-        }
-            .registerInBus(this)
+        }.registerInBus(this)
+
+        Bus.observe<UpdateTotalPriceEvent>().subscribe {
+            updateTotalPrice()
+        }.registerInBus(this)
+
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Bus.unregister(this)
+    }
+
+
+
+    fun updateTotalPrice(){
+        //计算总价
+        mTotalPrice = mAdapter.dataList
+            .filter { it.isSelected }
+            .map { it.goodsCount * it.goodsPrice }
+            .sum()
+
+        mTotalPriceTv.text = "合计${YuanFenConverter.changeF2YWithUnit(mTotalPrice)}"
     }
 
     override fun onGetCartListResult(result: MutableList<CartGoods>) {
@@ -116,6 +135,8 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
         }
     }
+
+
 
 
 }
