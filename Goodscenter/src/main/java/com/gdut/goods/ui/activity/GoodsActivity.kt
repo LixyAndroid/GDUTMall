@@ -1,7 +1,9 @@
 package com.gdut.goods.ui.activity
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.gdut.base.ext.startLoading
@@ -74,12 +76,14 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
 
         }else{
             mMultiStateView.startLoading()
+
             mPresenter.getGoodsList(intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1), mCurrentPage)
         }
 
 
 
     }
+
 
     override fun injectComponent() {
         DaggerGoodsComponent.builder().activityComponent(activityComponent)

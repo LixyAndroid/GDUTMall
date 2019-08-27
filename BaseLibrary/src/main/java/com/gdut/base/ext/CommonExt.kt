@@ -73,10 +73,10 @@ fun ImageView.loadUrl(url: String) {
     多状态视图开始加载
  */
 fun MultiStateView.startLoading(){
-   // viewState = MultiStateView.VIEW_STATE_LOADING
+    //viewState = MultiStateView.VIEW_STATE_LOADING
     val loadingView = getView(MultiStateView.VIEW_STATE_LOADING)
-   // val animBackground = loadingView!!.find<View>(R.id.loading_anim_view).background
-   // (animBackground as AnimationDrawable).start()
+//    val animBackground = loadingView!!.find<View>(R.id.loading_anim_view).background
+//    (animBackground as AnimationDrawable).start()
 }
 
 /*

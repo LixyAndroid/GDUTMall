@@ -169,10 +169,13 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
     override fun onGetCartListResult(result: MutableList<CartGoods>) {
         if (result != null && result.size > 0) {
             mAdapter.setData(result)
+            mHeaderBar.getRightView().setVisible(true)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
             //没有数据
+            mHeaderBar.getRightView().setVisible(false)
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+
         }
 
         AppPrefsUtils.putInt(GoodsConstant.SP_CART_SIZE,result.size)
@@ -184,6 +187,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
 
     override fun onDeleteCartListResult(result: Boolean) {
         Toast.makeText(context,"删除成功",Toast.LENGTH_SHORT).show()
+        refreshEditStatus()
         loadData()
     }
 
