@@ -30,7 +30,6 @@ import com.kotlin.base.widgets.BannerImageLoader
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_goods_detail_tab_one.*
-import org.jetbrains.anko.contentView
 
 
 /*
@@ -156,9 +155,7 @@ class GoodsDetailTabOneFragment : BaseMvpFragment<GoodsDetailPresenter>(), Goods
         mSkuPop.setGoodsIcon(result.goodsDefaultIcon)
         mSkuPop.setGoodsCode(result.goodsCode)
         mSkuPop.setGoodsPrice(result.goodsDefaultPrice)
-
         mSkuPop.setSkuData(result.goodsSku)
-
     }
 
     /*
