@@ -1,6 +1,8 @@
 package com.gdut.goods.service.impl
 
+import com.gdut.base.data.protocol.BaseResp
 import com.gdut.base.ext.convert
+import com.gdut.base.ext.convertBoolean
 import com.gdut.goods.data.protocol.CartGoods
 import com.gdut.goods.data.repository.CartRepository
 import com.gdut.goods.service.CartService
@@ -32,6 +34,11 @@ class CartServiceImpl @Inject constructor() : CartService {
 
     override fun getCartList(): Observable<MutableList<CartGoods>?> {
         return repository.getCartList().convert()
+    }
+
+    override fun deleteCartList(list: List<Int>): Observable<Boolean> {
+
+        return repository.deleteCartList(list).convertBoolean()
     }
 
 }

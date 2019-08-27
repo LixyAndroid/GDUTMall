@@ -11,4 +11,5 @@ import com.gdut.goods.data.protocol.Category
  */
 interface CartListView:BaseView {
     fun onGetCartListResult(result:MutableList<CartGoods>)
+    fun onDeleteCartListResult(result:Boolean)
 }
