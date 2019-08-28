@@ -15,6 +15,7 @@ import com.gdut.provider.common.isLogined
 import com.gdut.user.ui.activity.LoginActivity
 import com.gdut.user.ui.activity.UserInfoActivity
 import com.gdut.base.utils.AppPrefsUtils
+import com.gdut.order.ui.activity.ShipAddressActivity
 import com.gdut.provider.common.ProviderConstant
 import kotlinx.android.synthetic.main.fragment_me.*
 
@@ -44,6 +45,7 @@ class MeFragment : BaseFragment(), View.OnClickListener {
     private fun initView() {
         mUserIconIv.onClick(this)
         mUserNameTv.onClick(this)
+        mAddressTv.onClick (this)
         mSettingTv.onClick(this)
 
     }
@@ -90,6 +92,17 @@ class MeFragment : BaseFragment(), View.OnClickListener {
                     // 获取class是使用::反射
                     startActivity(intent)
                 }
+            }
+
+            R.id.mAddressTv ->{
+                //startActivity<ShipAddressActivity>()
+
+                val intent = Intent()
+                //获取intent对象
+                intent.setClass(context, ShipAddressActivity::class.java)
+                // 获取class是使用::反射
+                startActivity(intent)
+
             }
 
 

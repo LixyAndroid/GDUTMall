@@ -1,5 +1,7 @@
 package com.gdut.order.service
 
+import com.gdut.base.data.protocol.BaseResp
+import com.gdut.order.data.protocol.ShipAddress
 import rx.Observable
 
 /*
@@ -15,4 +17,10 @@ interface ShipAddressService {
         shipUserMobile: String,
         shipAddress: String
     ): Observable<Boolean>
+
+
+    fun getShipAddressList(): Observable<MutableList<ShipAddress>?>
+
+    //修改
+    fun editShipAddress(address:ShipAddress): Observable<Boolean>
 }
