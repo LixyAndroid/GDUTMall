@@ -111,6 +111,19 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
             }
         }
 
+        mSettleAccountsBtn.onClick {
+            val cartGoodsList:MutableList<CartGoods> = arrayListOf()
+            mAdapter.dataList.filter { it.isSelected }
+                .mapTo(cartGoodsList){it}
+
+            if (cartGoodsList.size == 0){
+                Toast.makeText(context,"请选择需要提交的数据",Toast.LENGTH_SHORT).show()
+            }else {
+                mPresenter.submitCart(cartGoodsList,mTotalPrice)
+
+            }
+        }
+
     }
 
     private fun refreshEditStatus() {
@@ -170,6 +183,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
         if (result != null && result.size > 0) {
             mAdapter.setData(result)
             mHeaderBar.getRightView().setVisible(true)
+            mAllCheckedCb.isChecked = false
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
             //没有数据
@@ -189,6 +203,14 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
         Toast.makeText(context,"删除成功",Toast.LENGTH_SHORT).show()
         refreshEditStatus()
         loadData()
+    }
+
+    override fun onSubmitCartListResult(result: Int) {
+        Toast.makeText(context,"$result",Toast.LENGTH_SHORT).show()
+    }
+
+    fun  setBackVisible(isVisible:Boolean){
+        mHeaderBar.getLeftView().setVisible(isVisible)
     }
 
 

@@ -1,9 +1,7 @@
 package com.gdut.goods.ui.activity
 
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.view.View
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.gdut.base.ext.startLoading
@@ -32,7 +30,7 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
     private var mCurrentPage: Int = 1
     private var mMaxPage: Int = 1
 
-    private var mData:MutableList<Goods>? = null
+    private var mData: MutableList<Goods>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +49,8 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
         mGoodsaAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = mGoodsaAdapter
 
-        mGoodsaAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
+        mGoodsaAdapter.setOnItemClickListener(object :
+            BaseRecyclerViewAdapter.OnItemClickListener<Goods> {
             override fun onItemClick(item: Goods, position: Int) {
                 startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
             }
@@ -70,16 +69,21 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
     }
 
     private fun loadData() {
-        if (intent.getIntExtra(GoodsConstant.KEY_SEARCH_GOODS_TYPE,0) != 0){
+        if (intent.getIntExtra(GoodsConstant.KEY_SEARCH_GOODS_TYPE, 0) != 0) {
             mMultiStateView.startLoading()
-            mPresenter.getGoodsListByKeyword(intent.getStringExtra(GoodsConstant.KEY_GOODS_KEYWORD),mCurrentPage)
+            mPresenter.getGoodsListByKeyword(
+                intent.getStringExtra(GoodsConstant.KEY_GOODS_KEYWORD),
+                mCurrentPage
+            )
 
-        }else{
+        } else {
             mMultiStateView.startLoading()
 
-            mPresenter.getGoodsList(intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1), mCurrentPage)
+            mPresenter.getGoodsList(
+                intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1),
+                mCurrentPage
+            )
         }
-
 
 
     }
@@ -98,9 +102,9 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
 
         if (result != null && result.size > 0) {
             mMaxPage = result[0].maxPage
-            if (mCurrentPage == 1){
+            if (mCurrentPage == 1) {
                 mGoodsaAdapter.setData(result)
-            }else{
+            } else {
                 mGoodsaAdapter.dataList.addAll(result)
                 mGoodsaAdapter.notifyDataSetChanged()
             }

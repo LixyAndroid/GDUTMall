@@ -15,6 +15,7 @@ import com.gdut.goods.event.UpdateCartSizeEvent
 import com.gdut.goods.ui.adapter.GoodsDetailVpAdapter
 import com.gdut.provider.common.afterLogin
 import kotlinx.android.synthetic.main.activity_goods_detail.*
+import org.jetbrains.anko.startActivity
 import q.rorbin.badgeview.QBadgeView
 
 /**
@@ -47,6 +48,15 @@ class GoodsDetailActivity : BaseActivity() {
                 Bus.send(AddCartEvent())
             }
         }
+
+        mEnterCartTv.onClick {
+            startActivity<CartActivity>()
+        }
+
+        mLeftIv.onClick {
+            finish()
+        }
+
 
         mCartBdage = QBadgeView(this)
     }

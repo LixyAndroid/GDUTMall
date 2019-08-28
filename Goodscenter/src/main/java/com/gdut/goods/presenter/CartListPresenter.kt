@@ -61,6 +61,26 @@ class CartListPresenter @Inject constructor() : BasePresenter<CartListView>() {
     }
 
 
+    fun submitCart(list: MutableList<CartGoods>, totalPrice: Long) {
+
+        /*
+             业务逻辑
+         */
+
+        if (!checkNetWork()) {
+            return
+        }
+
+        mView.showLoading()
+        cartService.submitCart(list,totalPrice).excute(object : BaseSubscriber<Int>(mView) {
+            override fun onNext(t: Int) {
+                mView.onSubmitCartListResult(t)
+
+            }
+        }, lifecycleProvider)
+    }
+
+
 }
 
 
