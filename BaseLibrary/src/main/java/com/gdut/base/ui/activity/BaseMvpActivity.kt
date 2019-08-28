@@ -1,6 +1,7 @@
 package com.gdut.base.ui.activity
 
 import android.os.Bundle import android.os.PersistableBundle
+import com.alibaba.android.arouter.launcher.ARouter
 import com.gdut.base.common.BaseApplication
 import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.base.injection.component.DaggerActivityComponent
@@ -46,6 +47,8 @@ open abstract class BaseMvpActivity<T : BasePresenter<*>> : BaseActivity(), Base
         injectComponent()
 
         mLoadingDialog = ProgressLoading.create(this)
+
+        ARouter.getInstance().inject(this)
 
     }
 

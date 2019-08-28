@@ -210,8 +210,6 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
     }
 
     override fun onSubmitCartListResult(result: Int) {
-        Toast.makeText(context,"$result",Toast.LENGTH_SHORT).show()
-
         ARouter.getInstance().build(PATH_ORDER_CONFIRM)
             .withInt(KEY_ORDER_ID,result)
             .navigation()
