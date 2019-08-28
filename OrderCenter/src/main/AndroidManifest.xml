@@ -1,2 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.gdut.order" />
+        package="com.gdut.order"
+        >
+
+    <application
+            android:allowBackup="true"
+            android:label="@string/app_name"
+            android:supportsRtl="true"
+            android:usesCleartextTraffic="true"
+            android:restoreNeedsApplication="true"
+
+            >
+        <activity android:name=".ui.activity.OrderConfirmActivity"/>
+
+
+
+    </application>
+</manifest>

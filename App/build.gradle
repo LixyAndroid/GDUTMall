@@ -98,4 +98,5 @@ dependencies {
 
     //Kotlin Bus
     implementation 'com.eightbitlab:rxbus:1.0.2'
+    implementation project(path: ':OrderCenter')
 }

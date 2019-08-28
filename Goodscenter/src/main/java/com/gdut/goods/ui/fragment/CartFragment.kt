@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.gdut.base.ext.onClick
@@ -25,6 +26,9 @@ import com.gdut.goods.injection.module.CartModule
 import com.gdut.goods.presenter.CartListPresenter
 import com.gdut.goods.presenter.view.CartListView
 import com.gdut.goods.ui.adapter.CartGoodsAdapter
+import com.gdut.provider.common.ProviderConstant.Companion.KEY_ORDER_ID
+import com.gdut.provider.router.RouterPath.OrderCenter.Companion.PATH_ORDER_CONFIRM
+
 import com.kennyc.view.MultiStateView
 import kotlinx.android.synthetic.main.fragment_cart.*
 
@@ -207,6 +211,10 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
 
     override fun onSubmitCartListResult(result: Int) {
         Toast.makeText(context,"$result",Toast.LENGTH_SHORT).show()
+
+        ARouter.getInstance().build(PATH_ORDER_CONFIRM)
+            .withInt(KEY_ORDER_ID,result)
+            .navigation()
     }
 
     fun  setBackVisible(isVisible:Boolean){
