@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.gdut.base.ext.onClick
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.base.utils.YuanFenConverter
 import com.gdut.order.R
@@ -17,6 +18,7 @@ import com.gdut.order.ui.adapter.OrderGoodsAdapter
 import com.gdut.provider.common.ProviderConstant
 import com.gdut.provider.router.RouterPath.OrderCenter.Companion.PATH_ORDER_CONFIRM
 import kotlinx.android.synthetic.main.activity_order_confirm.*
+import org.jetbrains.anko.startActivity
 
 
 /**
@@ -51,9 +53,14 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
 
     private fun initView() {
+
+        mSelectShipTv.onClick {
+            startActivity<ShipAddressActivity>()
+        }
         mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
         mAdapter = OrderGoodsAdapter(this)
         mOrderGoodsRv.adapter = mAdapter
+
     }
 
     private fun loadData() {

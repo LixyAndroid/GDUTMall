@@ -1,6 +1,11 @@
 package com.gdut.user.ui.activity
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.support.v4.app.ActivityCompat
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.gdut.base.ext.enable
@@ -27,10 +32,11 @@ import org.jetbrains.anko.toast
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClickListener {
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        requestDangerousPermissions()
         initView()
     }
 
@@ -94,5 +100,23 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         finish()
     }
 
+
+    /**
+     * 请求拍照权限
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    fun requestDangerousPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//版本判断
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                val strings = arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.RECORD_AUDIO,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+                ActivityCompat.requestPermissions(this, strings, 100)
+            }
+        }
+    }
 
 }

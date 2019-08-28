@@ -54,6 +54,12 @@
                 style="@style/WeightMatch"
                 android:textColor="@color/text_light_dark"
                 android:background="@null"/>
+        <Button
+                android:id="@+id/btn_location_address"
+                style="@style/WrapWrap"
+                android:text="一键定位选址"
+               />
+
     </LinearLayout>
     <Button
             android:id="@+id/mSaveBtn"

@@ -121,7 +121,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
                 .mapTo(cartGoodsList){it}
 
             if (cartGoodsList.size == 0){
-                Toast.makeText(context,"请选择需要提交的数据",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"请选择需要购买的商品^-^",Toast.LENGTH_SHORT).show()
             }else {
                 mPresenter.submitCart(cartGoodsList,mTotalPrice)
 

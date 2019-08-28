@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
@@ -49,12 +49,9 @@ dependencies {
 
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
-
-
     implementation project(path: ':BaseLibrary')
 
     //RxKotlin and RxAndroid
-
     implementation "io.reactivex:rxkotlin:$rx_kotlin_version"
     implementation "io.reactivex:rxandroid:$rx_android_version"
 
@@ -75,14 +72,15 @@ dependencies {
 
     //MulitStateView
     implementation "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
-
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation project(path: ':Provider')
     implementation project(path: ':BaseLibrary')
-
     implementation 'com.android.support:design:28.0.0'
 
     //RxLifecycle
     implementation "com.trello:rxlifecycle-kotlin:$rx_lifecycle_version"
     implementation "com.trello:rxlifecycle-components:$rx_lifecycle_version"
+    implementation files('libs/Amap_2DMap_V5.2.0_20170627.jar')
+    implementation files('libs/AMap_Location_V4.7.0_20190708.jar')
+    implementation files('libs/AMap_Search_V6.9.2_20190709.jar')
 }

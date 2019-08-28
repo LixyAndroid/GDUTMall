@@ -69,7 +69,7 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
         setContentView(R.layout.activity_user_info)
 
         //拍照权限
-        requestDangerousPermissions()
+        //requestDangerousPermissions()
 
         mTakePhoto = TakePhotoImpl(this, this)
         mTakePhoto.onCreate(savedInstanceState)
@@ -215,20 +215,20 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
     /**
      * 请求拍照权限
      */
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    fun requestDangerousPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//版本判断
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                val strings = arrayOf(
-                    Manifest.permission.CAMERA,
-                    Manifest.permission.RECORD_AUDIO,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )
-                ActivityCompat.requestPermissions(this, strings, 100)
-            }
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    fun requestDangerousPermissions() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {//版本判断
+//            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                val strings = arrayOf(
+//                    Manifest.permission.CAMERA,
+//                    Manifest.permission.RECORD_AUDIO,
+//                    Manifest.permission.READ_EXTERNAL_STORAGE,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                )
+//                ActivityCompat.requestPermissions(this, strings, 100)
+//            }
+//        }
+//    }
 
 
 }
