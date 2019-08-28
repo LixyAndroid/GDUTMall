@@ -3,13 +3,18 @@ package com.gdut.order.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import com.gdut.base.ext.onClick
+import com.gdut.base.ext.startLoading
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.order.R
+import com.gdut.order.common.OrderConstant
+import com.gdut.order.data.protocol.ShipAddress
 import com.gdut.order.injection.component.DaggerShipAddressComponent
 import com.gdut.order.injection.module.ShipAddressModule
 import com.gdut.order.presenter.EditShipAddressPresenter
 import com.gdut.order.presenter.view.EditShipAddressView
+import kotlinx.android.synthetic.main.activity_address.*
 import kotlinx.android.synthetic.main.activity_edit_address.*
+import kotlinx.android.synthetic.main.activity_edit_address.mHeaderBar
 import org.jetbrains.anko.toast
 
 /**
@@ -18,6 +23,8 @@ import org.jetbrains.anko.toast
  */
 class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), EditShipAddressView {
 
+
+    private var mAddress:ShipAddress? = null
 
     override fun injectComponent() {
         DaggerShipAddressComponent.builder().activityComponent(activityComponent).shipAddressModule(
@@ -31,7 +38,11 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
         setContentView(R.layout.activity_edit_address)
 
         initView()
+
+        initData()
     }
+
+
 
     private fun initView() {
         btn_location_address.onClick {
@@ -54,8 +65,35 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
                 toast("收获地址还没填呢")
                 return@onClick
             }
-            mPresenter.addShipAddress(mShipNameEt.text.toString(),mShipMobileEt.text.toString(),mShipAddressEt.text.toString())
+
+            if (mAddress == null){
+                mPresenter.addShipAddress(mShipNameEt.text.toString(),mShipMobileEt.text.toString(),mShipAddressEt.text.toString())
+            }else{
+
+                mAddress!!.shipUserName = mShipNameEt.text.toString()
+                mAddress!!.shipUserMobile = mShipMobileEt.text.toString()
+                mAddress!!.shipAddress = mShipAddressEt.text.toString()
+
+
+                mPresenter.editShipAddress(mAddress!!)
+            }
+
+
         }
+
+    }
+
+    private fun initData() {
+        mAddress = intent.getParcelableExtra(OrderConstant.KEY_SHIP_ADDRESS)
+        mAddress?.let {
+
+            mHeaderBar.getTitleView().text = "修改地址"
+            mShipNameEt.setText(it.shipUserName)
+            mShipMobileEt.setText(it.shipUserMobile)
+            mShipAddressEt.setText(it.shipAddress)
+        }
+
+
 
     }
 
@@ -72,8 +110,13 @@ class ShipAddressEditActivity : BaseMvpActivity<EditShipAddressPresenter>(), Edi
 
 
     override fun onAddShipAddressResult(result: Boolean) {
+        toast("新增地址成功")
+        finish()
 
-        toast("添加地址成功")
+    }
+
+    override fun onEditShipAddressResult(result: Boolean) {
+        toast("修改地址成功")
         finish()
     }
 

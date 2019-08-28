@@ -89,4 +89,13 @@ class HeaderBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     fun getRightText():String{
         return mRightTv.text.toString()
     }
+
+    /*
+        获取右侧文字
+     */
+    fun getTitleView():TextView{
+        return mTitleTv
+    }
+
+
 }

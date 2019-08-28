@@ -6,6 +6,7 @@ import com.gdut.base.ext.onClick
 import com.gdut.base.ext.startLoading
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.order.R
+import com.gdut.order.common.OrderConstant
 import com.gdut.order.data.protocol.ShipAddress
 import com.gdut.order.injection.component.DaggerShipAddressComponent
 import com.gdut.order.injection.module.ShipAddressModule
@@ -63,7 +64,8 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
             }
 
             override fun onEdit(address: ShipAddress) {
-                toast("设置默认")
+                startActivity<ShipAddressEditActivity>(OrderConstant.KEY_SHIP_ADDRESS to  address)
+
 
             }
 

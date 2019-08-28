@@ -3,6 +3,7 @@ package com.gdut.order.presenter
 import com.gdut.base.ext.excute
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.rx.BaseSubscriber
+import com.gdut.order.data.protocol.ShipAddress
 import com.gdut.order.presenter.view.EditShipAddressView
 import com.gdut.order.service.ShipAddressService
 import javax.inject.Inject
@@ -15,9 +16,7 @@ class EditShipAddressPresenter @Inject constructor() : BasePresenter<EditShipAdd
     @Inject
     lateinit var shipAddressService: ShipAddressService
 
-    /*
-        根据ID获取订单
-     */
+
     fun addShipAddress(
         shipUserName: String,
         shipUserMobile: String,
@@ -36,5 +35,19 @@ class EditShipAddressPresenter @Inject constructor() : BasePresenter<EditShipAdd
 
     }
 
+
+    fun editShipAddress(address:ShipAddress) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        shipAddressService.editShipAddress(address)
+            .excute(object : BaseSubscriber<Boolean>(mView) {
+                override fun onNext(t: Boolean) {
+                    mView.onEditShipAddressResult(t)
+                }
+            }, lifecycleProvider)
+
+    }
 
 }
