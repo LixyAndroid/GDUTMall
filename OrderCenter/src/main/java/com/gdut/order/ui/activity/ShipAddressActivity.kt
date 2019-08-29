@@ -2,6 +2,8 @@ package com.gdut.order.ui.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import com.bigkoo.alertview.AlertView
+import com.bigkoo.alertview.OnItemClickListener
 import com.gdut.base.ext.onClick
 import com.gdut.base.ext.startLoading
 import com.gdut.base.ui.activity.BaseMvpActivity
@@ -23,7 +25,6 @@ import org.jetbrains.anko.toast
  * date  2019/8/28 20:19
  */
 class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddressView {
-
 
 
     private lateinit var mAdapter: ShipAddressAdapter
@@ -57,20 +58,28 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
 
         mAddressRv.adapter = mAdapter
 
-        mAdapter.mOptClickListener = object :ShipAddressAdapter.OnOptClickListener{
+        mAdapter.mOptClickListener = object : ShipAddressAdapter.OnOptClickListener {
             override fun onSetDefault(address: ShipAddress) {
 
                 mPresenter.setDefaultShipAddress(address)
             }
 
             override fun onEdit(address: ShipAddress) {
-                startActivity<ShipAddressEditActivity>(OrderConstant.KEY_SHIP_ADDRESS to  address)
+                startActivity<ShipAddressEditActivity>(OrderConstant.KEY_SHIP_ADDRESS to address)
 
 
             }
 
             override fun onDelete(address: ShipAddress) {
-                toast("删除")
+                AlertView("删除", "确定删除该地址？", "取消", null, arrayOf("确定"), this@ShipAddressActivity,
+                    AlertView.Style.Alert, OnItemClickListener { o,
+                                                                 position ->
+                        if (position == 0) {
+                            mPresenter.deleteShipAddress(address.id)
+                        }
+
+                    }
+                ).show()
             }
 
         }
@@ -105,7 +114,13 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
      * 设置默认回调
      */
     override fun onSetDefaultResult(result: Boolean) {
-       toast("设置默认成功")
+        toast("设置默认成功")
+        loadData()
+    }
+
+    override fun onDeleteResult(result: Boolean) {
+
+        toast("删除成功")
         loadData()
     }
 

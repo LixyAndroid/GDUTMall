@@ -14,4 +14,5 @@ interface ShipAddressView : BaseView {
 
     fun onSetDefaultResult(result:Boolean)
 
+    fun onDeleteResult(result:Boolean)
 }

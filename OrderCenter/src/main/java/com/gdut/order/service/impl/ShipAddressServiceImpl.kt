@@ -8,11 +8,8 @@ import com.gdut.order.service.ShipAddressService
 import rx.Observable
 import javax.inject.Inject
 
-/*
-    订单业务实现类
- */
-class ShipAddressServiceImpl @Inject constructor() : ShipAddressService {
 
+class ShipAddressServiceImpl @Inject constructor() : ShipAddressService {
 
 
     @Inject
@@ -35,5 +32,10 @@ class ShipAddressServiceImpl @Inject constructor() : ShipAddressService {
     override fun editShipAddress(address: ShipAddress): Observable<Boolean> {
 
         return repository.editShipAddress(address).convertBoolean()
+    }
+
+    override fun deleteShipAddress(id: Int): Observable<Boolean> {
+
+        return  repository.deleteShipAddress(id).convertBoolean()
     }
 }

@@ -83,4 +83,7 @@ dependencies {
     implementation files('libs/Amap_2DMap_V5.2.0_20170627.jar')
     implementation files('libs/AMap_Location_V4.7.0_20190708.jar')
     implementation files('libs/AMap_Search_V6.9.2_20190709.jar')
+
+    //Alert View
+    implementation "com.bigkoo:alertview:$alert_view_version"
 }

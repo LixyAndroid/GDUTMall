@@ -50,4 +50,21 @@ class ShipAddressPresenter @Inject constructor() : BasePresenter<ShipAddressView
     }
 
 
+    /*
+      根据ID获取订单
+   */
+    fun deleteShipAddress(id: Int) {
+        if (!checkNetWork()) {
+            return
+        }
+        mView.showLoading()
+        shipAddressService.deleteShipAddress(id).excute(object : BaseSubscriber<Boolean>(mView) {
+            override fun onNext(t: Boolean) {
+                mView.onDeleteResult(t)
+            }
+        }, lifecycleProvider)
+
+    }
+
+
 }
