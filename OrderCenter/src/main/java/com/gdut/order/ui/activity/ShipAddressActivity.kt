@@ -93,6 +93,7 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
 
             override fun onItemClick(item: ShipAddress, position: Int) {
                 Bus.send(SelectAddressEvent(item))
+                finish()
             }
 
         })

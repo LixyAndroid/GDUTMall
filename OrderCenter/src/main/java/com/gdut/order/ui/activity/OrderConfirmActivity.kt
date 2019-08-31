@@ -38,7 +38,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     private lateinit var mAdapter: OrderGoodsAdapter
 
-    private var mOrder: Order? = null
+    private var mCurrentOrder: Order? = null
 
     override fun injectComponent() {
         DaggerOrderComponent.builder().activityComponent(activityComponent)
@@ -60,6 +60,11 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     private fun initView() {
 
+
+        mShipView.onClick {
+            startActivity<ShipAddressActivity>()
+        }
+
         mSelectShipTv.onClick {
             startActivity<ShipAddressActivity>()
         }
@@ -74,7 +79,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             .subscribe { t: SelectAddressEvent ->
 
                 run {
-                    mOrder?.let {
+                    mCurrentOrder?.let {
                         it.shipAddress = t.address
                     }
                     updateAddressView()
@@ -92,7 +97,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     override fun onGetOrderByIdResult(result: Order) {
 
-        mOrder = result
+        mCurrentOrder = result
         mAdapter.setData(result.orderGoodsList)
         mTotalPriceTv.text = "合计：${YuanFenConverter.changeF2YWithUnit(result.totalPrice)}"
 
@@ -113,7 +118,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
 
     private fun updateAddressView() {
 
-        mOrder?.let {
+        mCurrentOrder?.let {
             if (it.shipAddress == null) {
                 mSelectShipTv.setVisible(true)
                 mShipView.setVisible(false)
