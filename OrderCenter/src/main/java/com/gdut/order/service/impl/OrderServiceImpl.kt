@@ -11,7 +11,7 @@ import javax.inject.Inject
 /*
     订单业务实现类
  */
-class OrderServiceImpl @Inject constructor(): OrderService{
+class OrderServiceImpl @Inject constructor() : OrderService {
 
     @Inject
     lateinit var repository: OrderRepository

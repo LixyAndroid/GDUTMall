@@ -14,16 +14,21 @@ import kotlinx.android.synthetic.main.layout_address_item.view.*
 /*
     收货地址数据适配
  */
-class ShipAddressAdapter(context: Context) : BaseRecyclerViewAdapter<ShipAddress, ShipAddressAdapter.ViewHolder>(context) {
+class ShipAddressAdapter(context: Context) :
+    BaseRecyclerViewAdapter<ShipAddress, ShipAddressAdapter.ViewHolder>(context) {
 
-    var mOptClickListener:OnOptClickListener? = null
+    var mOptClickListener: OnOptClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup,
-                                    viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
         val view = LayoutInflater.from(mContext)
-                .inflate(R.layout.layout_address_item,
-                        parent,
-                        false)
+            .inflate(
+                R.layout.layout_address_item,
+                parent,
+                false
+            )
         return ViewHolder(view)
     }
 
@@ -37,7 +42,7 @@ class ShipAddressAdapter(context: Context) : BaseRecyclerViewAdapter<ShipAddress
 
         holder.itemView.mSetDefaultTv.onClick {
             mOptClickListener?.let {
-                if (holder.itemView.mSetDefaultTv.isSelected){
+                if (holder.itemView.mSetDefaultTv.isSelected) {
                     return@onClick
                 }
                 model.shipIsDefault = 0
@@ -64,9 +69,9 @@ class ShipAddressAdapter(context: Context) : BaseRecyclerViewAdapter<ShipAddress
     /*
         对应操作接口
      */
-    interface OnOptClickListener{
-        fun onSetDefault(address:ShipAddress)
-        fun onEdit(address:ShipAddress)
-        fun onDelete(address:ShipAddress)
+    interface OnOptClickListener {
+        fun onSetDefault(address: ShipAddress)
+        fun onEdit(address: ShipAddress)
+        fun onDelete(address: ShipAddress)
     }
 }

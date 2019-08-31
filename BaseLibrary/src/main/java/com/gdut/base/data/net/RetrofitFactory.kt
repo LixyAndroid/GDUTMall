@@ -14,33 +14,31 @@ import java.util.concurrent.TimeUnit
  * @author  Li Xuyang
  * date  2019/8/8 17:44
  */
-class RetrofitFactory  private constructor(){
+class RetrofitFactory private constructor() {
 
-    companion object{
-        val instance:RetrofitFactory by lazy {
+    companion object {
+        val instance: RetrofitFactory by lazy {
             RetrofitFactory()
         }
     }
 
 
-    private val retrofit:Retrofit
-    private val interceptor:Interceptor
+    private val retrofit: Retrofit
+    private val interceptor: Interceptor
 
     init {
-        interceptor = Interceptor {
-            chain ->
-                val request = chain.request()
-                    .newBuilder()
-                    .addHeader("Content-Type","application/json")
-                    .addHeader("charset","utf-8")
-                    .addHeader("token",AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
-                    .build()
+        interceptor = Interceptor { chain ->
+            val request = chain.request()
+                .newBuilder()
+                .addHeader("Content-Type", "application/json")
+                .addHeader("charset", "utf-8")
+                .addHeader("token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
+                .build()
 
             chain.proceed(request)
-        }
-    }
 
-    init {
+        }
+
 
         retrofit = Retrofit.Builder()
             .baseUrl(BaseConstant.SERVER_ADDRESS)
@@ -52,11 +50,11 @@ class RetrofitFactory  private constructor(){
 
     private fun initClient(): OkHttpClient {
 
-      return  OkHttpClient.Builder()
-          .addInterceptor(interceptor)
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
             .addInterceptor(initLogInterceptor())
-            .connectTimeout(10,TimeUnit.SECONDS)
-            .readTimeout(10,TimeUnit.SECONDS)
+            .connectTimeout(10, TimeUnit.SECONDS)
+            .readTimeout(10, TimeUnit.SECONDS)
             .build()
 
     }
@@ -70,7 +68,7 @@ class RetrofitFactory  private constructor(){
 
     }
 
-    fun <T>create(service: Class<T>): T{
+    fun <T> create(service: Class<T>): T {
         return retrofit.create(service)
 
 

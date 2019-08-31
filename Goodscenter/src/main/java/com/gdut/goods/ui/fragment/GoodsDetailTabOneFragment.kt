@@ -27,7 +27,7 @@ import com.gdut.goods.presenter.GoodsDetailPresenter
 import com.gdut.goods.presenter.view.GoodsDetailView
 import com.gdut.goods.ui.activity.GoodsDetailActivity
 import com.gdut.goods.widget.GoodsSkuPopView
-import com.kotlin.base.widgets.BannerImageLoader
+import com.gdut.base.widgets.BannerImageLoader
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_goods_detail_tab_one.*

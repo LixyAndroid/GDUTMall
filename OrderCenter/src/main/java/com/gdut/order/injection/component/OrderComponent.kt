@@ -15,5 +15,4 @@ interface OrderComponent {
     fun inject(activity: OrderConfirmActivity)
     //fun inject(fragment:OrderFragment)
 
-    //fun inject(activity:OrderDetailActivity)
 }

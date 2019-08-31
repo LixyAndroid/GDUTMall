@@ -13,7 +13,7 @@ import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.adapter.HomeDiscountAdapter
 import com.gdut.gdutmall.ui.adapter.TopicAdapter
 import com.gdut.goods.ui.activity.SearchGoodsActivity
-import com.kotlin.base.widgets.BannerImageLoader
+import com.gdut.base.widgets.BannerImageLoader
 import com.kotlin.mall.common.*
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer

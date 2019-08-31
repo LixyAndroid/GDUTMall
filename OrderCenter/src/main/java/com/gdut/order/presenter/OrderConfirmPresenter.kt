@@ -14,7 +14,7 @@ import javax.inject.Inject
 class OrderConfirmPresenter @Inject constructor() : BasePresenter<OrderConfirmView>() {
 
     @Inject
-    lateinit var orderService:OrderService
+    lateinit var orderService: OrderService
 
     /*
         根据ID获取订单
@@ -26,7 +26,7 @@ class OrderConfirmPresenter @Inject constructor() : BasePresenter<OrderConfirmVi
         mView.showLoading()
         orderService.getOrderById(orderId).excute(object : BaseSubscriber<Order>(mView) {
             override fun onNext(t: Order) {
-                    mView.onGetOrderByIdResult(t)
+                mView.onGetOrderByIdResult(t)
             }
         }, lifecycleProvider)
 
