@@ -43,7 +43,7 @@ dependencies {
     // Anko Commons
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
 // Support-v4 (only Anko Commons)
-    compile "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
 
     //Retrofit
     implementation "com.squareup.okhttp3:okhttp:${ok_http_version}"

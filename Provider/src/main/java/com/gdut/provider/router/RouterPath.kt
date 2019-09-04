@@ -16,4 +16,12 @@ object RouterPath {
             const val PATH_ORDER_CONFIRM = "/orderCenter/confirm"
         }
     }
+
+    //消息模块
+    class MessageCenter{
+        companion object {
+            const val PATH_MESSAGE_PUSH = "/messageCenter/push"
+            const val PATH_MESSAGE_ORDER = "/messageCenter/order"
+        }
+    }
 }

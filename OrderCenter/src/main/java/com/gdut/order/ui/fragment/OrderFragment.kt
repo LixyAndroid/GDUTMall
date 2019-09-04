@@ -5,10 +5,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bigkoo.alertview.AlertView
 import com.bigkoo.alertview.OnItemClickListener
 import com.gdut.base.ext.startLoading
+import com.gdut.base.ui.adapter.BaseRecyclerViewAdapter
 import com.gdut.base.ui.fragment.BaseMvpFragment
 import com.gdut.order.R
 import com.gdut.order.common.OrderConstant
@@ -17,9 +17,13 @@ import com.gdut.order.injection.component.DaggerOrderComponent
 import com.gdut.order.injection.module.OrderModule
 import com.gdut.order.presenter.OrderListPresenter
 import com.gdut.order.presenter.view.OrderListView
+import com.gdut.order.ui.activity.OrderDetailActivity
+import com.gdut.provider.common.ProviderConstant
 import com.kennyc.view.MultiStateView
 import com.kotlin.order.ui.adapter.OrderAdapter
 import kotlinx.android.synthetic.main.fragment_order.*
+import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 
 
 /*
@@ -64,6 +68,36 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
         mOrderRv.layoutManager = LinearLayoutManager(activity)
         mAdapter = activity?.let { OrderAdapter(it) }!!
         mOrderRv.adapter = mAdapter
+
+        /*
+            订单对应操作
+         */
+        mAdapter.listener = object : OrderAdapter.OnOptClickListener {
+            override fun onOptClick(optType: Int, order: Order) {
+                when (optType) {
+                    OrderConstant.OPT_ORDER_PAY -> {
+
+                    }
+                    OrderConstant.OPT_ORDER_CONFIRM -> {
+                        mPresenter.confirmOrder(order.id)
+                    }
+                    OrderConstant.OPT_ORDER_CANCEL -> {
+                        //mPresenter.cancelOrder(order.id)
+                        showCancelDialog(order)
+                    }
+                }
+            }
+        }
+
+        /*
+            列表单项点击事件
+         */
+        mAdapter.setOnItemClickListener(object :
+            BaseRecyclerViewAdapter.OnItemClickListener<Order> {
+            override fun onItemClick(item: Order, position: Int) {
+                startActivity<OrderDetailActivity>(ProviderConstant.KEY_ORDER_ID to item.id)
+            }
+        })
 
 
     }
@@ -113,7 +147,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
         订单确认收货回调
      */
     override fun onConfirmOrderResult(result: Boolean) {
-        Toast.makeText(context, "确认收货成功", Toast.LENGTH_SHORT).show()
+        toast("确认收货成功")
         loadData()
     }
 
@@ -121,7 +155,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
         取消订单回调
      */
     override fun onCancelOrderResult(result: Boolean) {
-        Toast.makeText(context, "取消订单成功", Toast.LENGTH_SHORT).show()
+        toast("取消订单成功")
         loadData()
     }
 }

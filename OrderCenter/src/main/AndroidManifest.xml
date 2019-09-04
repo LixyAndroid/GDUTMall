@@ -48,5 +48,6 @@
         </service>
 
         <activity android:name=".ui.activity.OrderActivity"/>
+        <activity android:name=".ui.activity.OrderDetailActivity"/>
     </application>
 </manifest>

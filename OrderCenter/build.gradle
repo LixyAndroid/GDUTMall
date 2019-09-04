@@ -51,6 +51,8 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation project(path: ':BaseLibrary')
 
+    // Support-v4 (only Anko Commons)
+    implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
     //RxKotlin and RxAndroid
     implementation "io.reactivex:rxkotlin:$rx_kotlin_version"
     implementation "io.reactivex:rxandroid:$rx_android_version"
@@ -89,4 +91,6 @@ dependencies {
 
     //Kotlin Bus
     implementation 'com.eightbitlab:rxbus:1.0.2'
+
+
 }
