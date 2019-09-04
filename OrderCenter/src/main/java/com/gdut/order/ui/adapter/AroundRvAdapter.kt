@@ -17,7 +17,7 @@ import com.gdut.order.R
  * on 2019/5/27 18:53
  */
 class AroundRvAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var poiList = arrayListOf<PoiItem>()
+    private var poiList = arrayListOf<PoiItem>()
 
     fun setPoiItemList(list: ArrayList<PoiItem>) {
         this.poiList = list

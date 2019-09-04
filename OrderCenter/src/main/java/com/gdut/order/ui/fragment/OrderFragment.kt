@@ -20,7 +20,7 @@ import com.gdut.order.presenter.view.OrderListView
 import com.gdut.order.ui.activity.OrderDetailActivity
 import com.gdut.provider.common.ProviderConstant
 import com.kennyc.view.MultiStateView
-import com.kotlin.order.ui.adapter.OrderAdapter
+import com.gdut.order.ui.adapter.OrderAdapter
 import kotlinx.android.synthetic.main.fragment_order.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
