@@ -1,7 +1,6 @@
 package com.gdut.gdutmall.ui.fragment
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +8,19 @@ import android.view.ViewGroup
 import com.gdut.base.ext.loadUrl
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.fragment.BaseFragment
+import com.gdut.base.utils.AppPrefsUtils
 import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.activity.SettingActivity
-import com.gdut.provider.common.isLogined
-import com.gdut.user.ui.activity.LoginActivity
-import com.gdut.user.ui.activity.UserInfoActivity
-import com.gdut.base.utils.AppPrefsUtils
+import com.gdut.order.common.OrderConstant
+import com.gdut.order.common.OrderStatus
+import com.gdut.order.ui.activity.OrderActivity
 import com.gdut.order.ui.activity.ShipAddressActivity
 import com.gdut.provider.common.ProviderConstant
+import com.gdut.provider.common.afterLogin
+import com.gdut.provider.common.isLogined
+import com.gdut.user.ui.activity.UserInfoActivity
 import kotlinx.android.synthetic.main.fragment_me.*
-
+import org.jetbrains.anko.support.v4.startActivity
 
 /**
  * @author  Li Xuyang
@@ -45,7 +47,11 @@ class MeFragment : BaseFragment(), View.OnClickListener {
     private fun initView() {
         mUserIconIv.onClick(this)
         mUserNameTv.onClick(this)
-        mAddressTv.onClick (this)
+        mWaitPayOrderTv.onClick(this)
+        mWaitConfirmOrderTv.onClick(this)
+        mCompleteOrderTv.onClick(this)
+        mAllOrderTv.onClick(this)
+        mAddressTv.onClick(this)
         mSettingTv.onClick(this)
 
     }
@@ -74,47 +80,46 @@ class MeFragment : BaseFragment(), View.OnClickListener {
 
         when (view.id) {
             R.id.mUserIconIv, R.id.mUserNameTv -> {
-                if (isLogined()) {
+                afterLogin {
+                    startActivity<UserInfoActivity>()
 
-                    // startActivity<UserInfoActivity>()
 
-                    val intent = Intent()
-                    //获取intent对象
-                    intent.setClass(context, UserInfoActivity::class.java)
-                    // 获取class是使用::反射
-                    startActivity(intent)
-
-                } else {
-                    //startActivity<LoginActivity>()
-                    val intent = Intent()
-                    //获取intent对象
-                    intent.setClass(context, LoginActivity::class.java)
-                    // 获取class是使用::反射
-                    startActivity(intent)
                 }
             }
 
-            R.id.mAddressTv ->{
-                //startActivity<ShipAddressActivity>()
 
-                val intent = Intent()
-                //获取intent对象
-                intent.setClass(context, ShipAddressActivity::class.java)
-                // 获取class是使用::反射
-                startActivity(intent)
+            R.id.mWaitPayOrderTv -> {
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_PAY)
+            }
 
+            R.id.mWaitConfirmOrderTv -> {
+
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_WAIT_CONFIRM)
+            }
+            R.id.mCompleteOrderTv -> {
+                startActivity<OrderActivity>(OrderConstant.KEY_ORDER_STATUS to OrderStatus.ORDER_COMPLETED)
+            }
+
+            R.id.mAllOrderTv -> {
+                afterLogin {
+
+                    startActivity<OrderActivity>()
+
+                }
             }
 
 
-            R.id.mSettingTv ->{
-                //startActivity<SettingActivity>()
+            R.id.mAddressTv -> {
+                startActivity<ShipAddressActivity>()
 
-                val intent = Intent()
-                //获取intent对象
-                intent.setClass(context, SettingActivity::class.java)
-                // 获取class是使用::反射
-                startActivity(intent)
+
             }
+
+            R.id.mSettingTv -> {
+                startActivity<SettingActivity>()
+            }
+
+
         }
 
     }

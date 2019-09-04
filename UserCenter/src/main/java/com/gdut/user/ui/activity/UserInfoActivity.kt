@@ -39,7 +39,8 @@ import java.io.File
  * 用户信息
  */
 
-class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, TakePhoto.TakeResultListener {
+class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView,
+    TakePhoto.TakeResultListener {
 
 
     private lateinit var mTakePhoto: TakePhoto
@@ -147,7 +148,8 @@ class UserInfoActivity : BaseMvpActivity<UserInfoPresenter>(), UserInfoView, Tak
     }
 
     override fun injectComponent() {
-        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule()).build().inject(this)
+        DaggerUserComponent.builder().activityComponent(activityComponent).userModule(UserModule())
+            .build().inject(this)
         mPresenter.mView = this
     }
 
