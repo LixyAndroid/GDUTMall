@@ -112,5 +112,6 @@ dependencies {
     //BadgeView
     implementation 'q.rorbin:badgeview:1.1.3'
 
+    implementation 'com.android.support:multidex:1.0.3'
 
 }

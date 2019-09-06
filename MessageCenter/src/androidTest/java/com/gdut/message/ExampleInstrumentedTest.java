@@ -1,4 +1,4 @@
-package com.gdut.messagecenter;
+package com.gdut.message;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

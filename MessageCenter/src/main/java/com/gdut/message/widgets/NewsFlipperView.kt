@@ -1,4 +1,4 @@
-package com.gdut.messagecenter.widgets
+package com.gdut.message.widgets
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.ViewFlipper
-import com.gdut.messagecenter.R
+import com.gdut.message.R
 
 import org.jetbrains.anko.*
 

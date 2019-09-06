@@ -37,8 +37,8 @@ class ResetPwdActivity : BaseMvpActivity<ResetPwdPresenter>(), ResetPwdView {
     private fun initView() {
 
         //监听输入框
-        mConfirmBtn.enable(mPwdEt, { isBtnEnable() })
-        mConfirmBtn.enable(mPwdConfirmEt, { isBtnEnable() })
+        mConfirmBtn.enable(mPwdEt) { isBtnEnable() }
+        mConfirmBtn.enable(mPwdConfirmEt) { isBtnEnable() }
 
 
 

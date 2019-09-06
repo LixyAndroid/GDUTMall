@@ -4,8 +4,6 @@ package com.gdut.user.presenter
 import com.gdut.base.ext.excute
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.rx.BaseSubscriber
-import com.gdut.user.presenter.view.ForgetPwdView
-import com.gdut.user.presenter.view.RegisterView
 import com.gdut.user.presenter.view.ResetPwdView
 import com.gdut.user.service.UserService
 import javax.inject.Inject

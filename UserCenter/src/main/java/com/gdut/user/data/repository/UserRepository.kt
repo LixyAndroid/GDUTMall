@@ -4,7 +4,7 @@ import com.gdut.base.data.net.RetrofitFactory
 import com.gdut.base.data.protocol.BaseResp
 import com.gdut.user.data.api.UserApi
 import com.gdut.user.data.protocol.*
-import com.kotlin.user.data.protocol.EditUserReq
+import com.gdut.user.data.protocol.EditUserReq
 import rx.Observable
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.kotlin.user.data.protocol
+package com.gdut.user.data.protocol
 
 /*
     修改用户资料请求体

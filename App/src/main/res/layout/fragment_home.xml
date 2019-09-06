@@ -25,7 +25,7 @@
             android:id="@+id/mHomeBanner"
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
-    <com.gdut.messagecenter.widgets.NewsFlipperView
+    <com.gdut.message.widgets.NewsFlipperView
             android:id="@+id/mNewsFlipperView"
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/common_margin_middle"

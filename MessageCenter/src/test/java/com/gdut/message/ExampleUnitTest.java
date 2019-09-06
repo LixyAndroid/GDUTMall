@@ -1,4 +1,4 @@
-package com.gdut.messagecenter;
+package com.gdut.message;
 
 import org.junit.Test;
 
