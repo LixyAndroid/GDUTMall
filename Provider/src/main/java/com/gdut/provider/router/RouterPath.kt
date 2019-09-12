@@ -32,9 +32,9 @@ object RouterPath {
     }
 
     //支付模块
-    class PaySDK{
+    class PayMoney{
         companion object {
-            const val PATH_PAY = "/paySDK/pay"
+            const val PATH_PAY = "/money/payQ"
         }
     }
 }

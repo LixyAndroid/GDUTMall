@@ -1,7 +1,6 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
@@ -23,6 +22,7 @@ import com.gdut.provider.common.ProviderConstant
 import com.gdut.provider.common.ProviderConstant.Companion.KEY_ORDER_ID
 import com.gdut.provider.router.RouterPath
 import com.gdut.provider.router.RouterPath.OrderCenter.Companion.PATH_ORDER_CONFIRM
+import com.gdut.provider.router.RouterPath.PayMoney.Companion.PATH_PAY
 import kotlinx.android.synthetic.main.activity_order_confirm.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -151,7 +151,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
      */
     override fun onSubmitOrderResult(result: Boolean) {
         toast("订单提交成功")
-        ARouter.getInstance().build(RouterPath.PaySDK.PATH_PAY)
+        ARouter.getInstance().build(PATH_PAY)
             .withInt(ProviderConstant.KEY_ORDER_ID,mCurrentOrder!!.id)
             .withLong(ProviderConstant.KEY_ORDER_PRICE,mCurrentOrder!!.totalPrice)
             .navigation()
