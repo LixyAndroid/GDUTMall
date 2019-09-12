@@ -1,7 +1,7 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
 import com.amap.api.location.AMapLocation
@@ -56,7 +56,7 @@ class MapLocationActivity : CheckPermissionsActivity(), AMapLocationListener, Lo
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_location)
         mapView = findViewById(R.id.map) as MapView
-        rv_around.layoutManager = LinearLayoutManager(this)
+        rv_around.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         adapter = AroundRvAdapter(this)
         rv_around.adapter = adapter
 

@@ -1,7 +1,7 @@
 package com.gdut.goods.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.gdut.base.ext.startLoading
@@ -45,7 +45,7 @@ class GoodsActivity : BaseMvpActivity<GoodsListPresenter>(), GoodsListView,
 
     private fun initView() {
 
-        mGoodsRv.layoutManager = GridLayoutManager(this, 2)
+        mGoodsRv.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
         mGoodsaAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = mGoodsaAdapter
 

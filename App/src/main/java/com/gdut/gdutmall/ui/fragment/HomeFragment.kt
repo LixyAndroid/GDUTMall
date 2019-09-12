@@ -2,7 +2,7 @@ package com.gdut.gdutmall.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -102,8 +102,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initDiscount() {
-        val manager = LinearLayoutManager(context)
-        manager.orientation = LinearLayoutManager.HORIZONTAL
+        val manager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        manager.orientation = androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
         mHomeDiscountRv.layoutManager = manager
 
         //val discountAdapter = HomeDiscountAdapter(activity)

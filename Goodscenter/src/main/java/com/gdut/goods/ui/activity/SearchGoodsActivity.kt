@@ -1,7 +1,7 @@
 package com.gdut.goods.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import com.gdut.base.ext.onClick
 import com.gdut.base.ext.setVisible
@@ -44,7 +44,7 @@ class SearchGoodsActivity : BaseActivity(), View.OnClickListener {
         mClearBtn.onClick(this)
         //RecyclerView适配器
         mAdapter = SearchHistoryAdapter(this)
-        mSearchHistoryRv.layoutManager = LinearLayoutManager(this)
+        mSearchHistoryRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         mSearchHistoryRv.adapter = mAdapter
         //item点击事件
         mAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener<String> {

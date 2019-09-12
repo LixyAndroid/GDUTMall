@@ -30,4 +30,11 @@ object RouterPath {
             const val PATH_MESSAGE_PUSH = "/messagePush/push"
         }
     }
+
+    //支付模块
+    class PaySDK{
+        companion object {
+            const val PATH_PAY = "/paySDK/pay"
+        }
+    }
 }

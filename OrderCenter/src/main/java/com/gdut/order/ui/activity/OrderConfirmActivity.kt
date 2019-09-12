@@ -1,9 +1,10 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.gdut.base.ext.onClick
@@ -18,7 +19,9 @@ import com.gdut.order.injection.module.OrderModule
 import com.gdut.order.presenter.OrderConfirmPresenter
 import com.gdut.order.presenter.view.OrderConfirmView
 import com.gdut.order.ui.adapter.OrderGoodsAdapter
+import com.gdut.provider.common.ProviderConstant
 import com.gdut.provider.common.ProviderConstant.Companion.KEY_ORDER_ID
+import com.gdut.provider.router.RouterPath
 import com.gdut.provider.router.RouterPath.OrderCenter.Companion.PATH_ORDER_CONFIRM
 import kotlinx.android.synthetic.main.activity_order_confirm.*
 import org.jetbrains.anko.startActivity
@@ -76,7 +79,7 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
         }
 
         //订单中商品列表
-        mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
+        mOrderGoodsRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         mAdapter = OrderGoodsAdapter(this)
         mOrderGoodsRv.adapter = mAdapter
     }
@@ -148,6 +151,11 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
      */
     override fun onSubmitOrderResult(result: Boolean) {
         toast("订单提交成功")
+        ARouter.getInstance().build(RouterPath.PaySDK.PATH_PAY)
+            .withInt(ProviderConstant.KEY_ORDER_ID,mCurrentOrder!!.id)
+            .withLong(ProviderConstant.KEY_ORDER_PRICE,mCurrentOrder!!.totalPrice)
+            .navigation()
+        finish()
     }
 
 

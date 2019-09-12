@@ -3,7 +3,7 @@ package com.gdut.order.ui.adapter
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ import com.gdut.order.R
  * Created by Li Xuyang
  * on 2019/5/27 18:53
  */
-class AroundRvAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AroundRvAdapter(val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private var poiList = arrayListOf<PoiItem>()
 
     fun setPoiItemList(list: ArrayList<PoiItem>) {
@@ -28,17 +28,17 @@ class AroundRvAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.
         return poiList.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewGroup: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewGroup: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_around_address, parent, false)
         return AroundItemHolder(itemView)
 
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         (holder as AroundItemHolder).bindData(poiList.get(position))
     }
 
-    inner class AroundItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class AroundItemHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val tvAddress: TextView = itemView.findViewById(R.id.address_title) as TextView
 
         init {

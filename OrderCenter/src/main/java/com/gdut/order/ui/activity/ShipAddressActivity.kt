@@ -1,7 +1,7 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.textclassifier.SelectionEvent
 import com.amap.api.services.busline.BusLineItem
 import com.bigkoo.alertview.AlertView
@@ -59,7 +59,7 @@ class ShipAddressActivity : BaseMvpActivity<ShipAddressPresenter>(), ShipAddress
 
     private fun initView() {
 
-        mAddressRv.layoutManager = LinearLayoutManager(this)
+        mAddressRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         mAdapter = ShipAddressAdapter(this)
 
         mAddressRv.adapter = mAdapter

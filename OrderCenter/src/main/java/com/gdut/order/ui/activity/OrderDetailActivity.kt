@@ -1,7 +1,7 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.gdut.base.ui.activity.BaseMvpActivity
 import com.gdut.base.utils.YuanFenConverter
@@ -47,7 +47,7 @@ class OrderDetailActivity : BaseMvpActivity<OrderDetailPresenter>(), OrderDetail
         初始化视图
      */
     private fun initView() {
-        mOrderGoodsRv.layoutManager = LinearLayoutManager(this)
+        mOrderGoodsRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         mAdapter = OrderGoodsAdapter(this)
         mOrderGoodsRv.adapter = mAdapter
     }

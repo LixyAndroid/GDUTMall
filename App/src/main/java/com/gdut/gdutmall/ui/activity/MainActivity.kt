@@ -2,7 +2,7 @@ package com.gdut.gdutmall.ui.activity
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
@@ -22,7 +22,7 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    private val mStack = Stack<Fragment>()
+    private val mStack = Stack<androidx.fragment.app.Fragment>()
     private val mHomeFragment by lazy { HomeFragment() }
     private val mCategoryFragment by lazy { CategoryFragment() }
     private val mCartFragment by lazy { CartFragment() }

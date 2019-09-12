@@ -10,7 +10,7 @@
 
     <LinearLayout style="@style/MatchWrap.Horizontal">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mTopCategoryRv"
                 style="@style/commonRecyclerView"
                 android:layout_weight="5"/>
@@ -40,7 +40,7 @@
             <com.kennyc.view.MultiStateView
                     android:id="@+id/mMultiStateView"
                     style="@style/MultiStateStyle">
-                <android.support.v7.widget.RecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/mSecondCategoryRv"
                         android:paddingLeft="12dp"
                         android:paddingTop="@dimen/common_padding_small"

@@ -13,7 +13,7 @@
                 android:src="@drawable/icon_back"
                 android:paddingLeft="@dimen/common_padding"
                 android:paddingRight="@dimen/common_padding"/>
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
                 android:id="@+id/mGoodsDetailTab"
                 style="@style/TabsStyle"
                 android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
                 android:layout_centerInParent="true"/>
     </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
             android:id="@+id/mGoodsDetailVp"
             style="@style/MatchWrap"
             android:layout_below="@id/mHeaderBar"

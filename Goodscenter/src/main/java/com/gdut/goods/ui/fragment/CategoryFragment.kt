@@ -2,8 +2,8 @@ package com.gdut.goods.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +68,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
     private fun initView() {
 
 
-        mTopCategoryRv.layoutManager = LinearLayoutManager(context)
+        mTopCategoryRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         topAdapter = context?.let { TopCategoryAdapter(it) }!!
         mTopCategoryRv.adapter = topAdapter
         //单项点击事件
@@ -84,7 +84,7 @@ class CategoryFragment : BaseMvpFragment<CategoryPresenter>(), CategoryView {
             }
         })
 
-        mSecondCategoryRv.layoutManager = GridLayoutManager(context, 3)
+        mSecondCategoryRv.layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 3)
         secondAdapter = context?.let { SecondCategoryAdapter(it) }!!
         mSecondCategoryRv.adapter = secondAdapter
         secondAdapter.setOnItemClickListener(object :

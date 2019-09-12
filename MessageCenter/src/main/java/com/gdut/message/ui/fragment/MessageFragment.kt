@@ -1,7 +1,7 @@
 package com.gdut.message.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +41,7 @@ class MessageFragment:BaseMvpFragment<MessagePresenter>(),MessageView {
         初始化视图
      */
     private fun initView() {
-        mMessageRv.layoutManager = LinearLayoutManager(context)
+        mMessageRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         mAdapter = context?.let { MessageAdapter(it) }!!
         mMessageRv.adapter = mAdapter
     }

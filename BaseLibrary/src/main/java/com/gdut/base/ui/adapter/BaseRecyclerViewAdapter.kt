@@ -1,12 +1,12 @@
 package com.gdut.base.ui.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 
 /*
     RecyclerViewAdapter基类
  */
-abstract class BaseRecyclerViewAdapter<T, VH : RecyclerView.ViewHolder>(var mContext: Context) : RecyclerView.Adapter<VH>() {
+abstract class BaseRecyclerViewAdapter<T, VH : androidx.recyclerview.widget.RecyclerView.ViewHolder>(var mContext: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<VH>() {
 
     //ItemClick事件
     var mItemClickListener: OnItemClickListener<T>? = null

@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 
 import android.os.Build
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 
 /**

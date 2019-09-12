@@ -1,7 +1,7 @@
 package com.gdut.goods.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,7 +85,7 @@ class CartFragment : BaseMvpFragment<CartListPresenter>(), CartListView {
     private fun initView() {
 
 
-        mCartGoodsRv.layoutManager = LinearLayoutManager(context)
+        mCartGoodsRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         mAdapter = context?.let { CartGoodsAdapter(it) }!!
         mCartGoodsRv.adapter = mAdapter
 

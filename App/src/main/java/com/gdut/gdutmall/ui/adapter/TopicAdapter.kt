@@ -1,7 +1,7 @@
 package com.gdut.gdutmall.ui.adapter
 
 import android.content.Context
-import android.support.v4.view.PagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.layout_topic_item.view.*
  * @author  Li Xuyang
  * date  2019/8/20 22:41
  */
-class TopicAdapter(private val context: Context, private val list: List<String>) : PagerAdapter() {
+class TopicAdapter(private val context: Context, private val list: List<String>) : androidx.viewpager.widget.PagerAdapter() {
     override fun destroyItem(parent: ViewGroup, paramInt: Int, paramObject: Any) {
         parent.removeView(paramObject as View)
     }

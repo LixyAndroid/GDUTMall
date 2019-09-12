@@ -1,7 +1,7 @@
 package com.gdut.order.ui.fragment
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +65,7 @@ class OrderFragment : BaseMvpFragment<OrderListPresenter>(), OrderListView {
         初始化视图
      */
     private fun initView() {
-        mOrderRv.layoutManager = LinearLayoutManager(activity)
+        mOrderRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(activity)
         mAdapter = activity?.let { OrderAdapter(it) }!!
         mOrderRv.adapter = mAdapter
 

@@ -1,7 +1,7 @@
 package com.gdut.order.ui.activity
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
+import com.google.android.material.tabs.TabLayout
 import com.gdut.base.ui.activity.BaseActivity
 import com.gdut.order.R
 import com.gdut.order.common.OrderConstant
