@@ -9,6 +9,11 @@ kapt {
         arg("AROUTER_MODULE_NAME", project.getName())
     }
 }
+
+androidExtensions{
+    experimental = true
+}
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"

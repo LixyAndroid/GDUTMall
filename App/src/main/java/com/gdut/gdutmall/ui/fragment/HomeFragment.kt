@@ -1,24 +1,24 @@
 package com.gdut.gdutmall.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdut.base.ext.onClick
 import com.gdut.base.ui.fragment.BaseFragment
+import com.gdut.base.widgets.BannerImageLoader
 import com.gdut.gdutmall.R
 import com.gdut.gdutmall.ui.adapter.HomeDiscountAdapter
 import com.gdut.gdutmall.ui.adapter.TopicAdapter
 import com.gdut.goods.ui.activity.SearchGoodsActivity
-import com.gdut.base.widgets.BannerImageLoader
 import com.kotlin.mall.common.*
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.crosswall.lib.coverflow.CoverFlow
+import org.jetbrains.anko.support.v4.startActivity
 
 
 /**
@@ -54,18 +54,12 @@ class HomeFragment : BaseFragment() {
     */
     private fun initView() {
         mSearchEt.onClick {
-           // startActivity<SearchGoodsActivity>()
+            startActivity<SearchGoodsActivity>()
 
-
-            val intent = Intent()
-            //获取intent对象
-            intent.setClass(context, SearchGoodsActivity::class.java)
-            // 获取class是使用::反射
-            startActivity(intent)
         }
 
         mScanIv.onClick {
-            Toast.makeText(context,R.string.coming_soon_tip,Toast.LENGTH_LONG).show()
+            Toast.makeText(context, R.string.coming_soon_tip, Toast.LENGTH_LONG).show()
         }
     }
 

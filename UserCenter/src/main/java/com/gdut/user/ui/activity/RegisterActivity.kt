@@ -21,13 +21,11 @@ import org.jetbrains.anko.toast
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
 
 
-    private var pressTime: Long = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
-
         initView()
 
     }
@@ -62,20 +60,10 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      */
     override fun onRegisterResult(result: String) {
         toast(result)
-
+        finish()
     }
 
-    override fun onBackPressed() {
-        val time = System.currentTimeMillis()
 
-        if (time - pressTime > 2000) {
-            toast("再按一次退出程序")
-            pressTime = time
-        } else {
-            AppManager.instance.exitApp(this)
-        }
-
-    }
 
 
     override fun onClick(v: View) {

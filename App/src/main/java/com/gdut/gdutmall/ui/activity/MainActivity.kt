@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
+import com.gdut.base.common.AppManager
 import com.gdut.base.ui.activity.BaseActivity
 import com.gdut.base.utils.AppPrefsUtils
 import com.gdut.gdutmall.R
@@ -18,10 +19,14 @@ import com.gdut.goods.ui.fragment.CartFragment
 import com.gdut.goods.ui.fragment.CategoryFragment
 import com.gdut.message.ui.fragment.MessageFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import java.util.*
 
 class MainActivity : BaseActivity() {
 
+
+
+    private var pressTime: Long = 0
     private val mStack = Stack<androidx.fragment.app.Fragment>()
     private val mHomeFragment by lazy { HomeFragment() }
     private val mCategoryFragment by lazy { CategoryFragment() }
@@ -109,5 +114,17 @@ class MainActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Bus.unregister(this)
+    }
+
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+        }
+
     }
 }

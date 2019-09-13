@@ -8,8 +8,8 @@ import com.gdut.base.injection.module.ActivityModule
 import com.gdut.base.injection.module.LifecycleProviderModule
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
+import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
-
 
 
 
@@ -28,7 +28,7 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
 
     override fun onError(text:String) {
 
-       // toast(text)
+        toast(text)
     }
 
 
@@ -45,8 +45,6 @@ open abstract class BaseMvpFragment<T : BasePresenter<*>> : BaseFragment(), Base
         initActivityInjection()
 
         injectComponent()
-
-
 
 
     }

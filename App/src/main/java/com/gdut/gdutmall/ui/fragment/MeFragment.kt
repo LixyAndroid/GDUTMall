@@ -21,6 +21,7 @@ import com.gdut.provider.common.isLogined
 import com.gdut.user.ui.activity.UserInfoActivity
 import kotlinx.android.synthetic.main.fragment_me.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 
 /**
  * @author  Li Xuyang
@@ -52,7 +53,9 @@ class MeFragment : BaseFragment(), View.OnClickListener {
         mCompleteOrderTv.onClick(this)
         mAllOrderTv.onClick(this)
         mAddressTv.onClick(this)
+        mShareTv.onClick(this)
         mSettingTv.onClick(this)
+
 
     }
 
@@ -110,14 +113,20 @@ class MeFragment : BaseFragment(), View.OnClickListener {
 
 
             R.id.mAddressTv -> {
-                startActivity<ShipAddressActivity>()
+                afterLogin {
+                    startActivity<ShipAddressActivity>()
+                }
 
+            }
 
+            R.id.mShareTv ->{
+                toast(R.string.coming_soon_tip)
             }
 
             R.id.mSettingTv -> {
                 startActivity<SettingActivity>()
             }
+
 
 
         }
