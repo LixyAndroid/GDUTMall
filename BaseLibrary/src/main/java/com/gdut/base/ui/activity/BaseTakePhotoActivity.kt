@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.os.PersistableBundle
 import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bigkoo.alertview.AlertView
@@ -14,7 +13,6 @@ import com.gdut.base.injection.component.ActivityComponent
 import com.gdut.base.injection.component.DaggerActivityComponent
 import com.gdut.base.injection.module.ActivityModule
 import com.gdut.base.injection.module.LifecycleProviderModule
-
 import com.gdut.base.presenter.BasePresenter
 import com.gdut.base.presenter.view.BaseView
 import com.gdut.base.utils.DateUtils

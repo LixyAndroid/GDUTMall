@@ -32,7 +32,6 @@
             android:supportsRtl="true"
             android:usesCleartextTraffic="true"
             android:restoreNeedsApplication="true"
-
             >
         <activity android:name=".ui.activity.OrderConfirmActivity"/>
         <activity android:name=".ui.activity.ShipAddressActivity"/>
